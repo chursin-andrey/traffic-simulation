@@ -99,11 +99,11 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// zugeordnete TimelineSteuerung
 		/// </summary>
-		private TimelineSteuerung m_steuerung;
+		private TimelineManagment m_steuerung;
 		/// <summary>
 		/// zugeordnete TimelineSteuerung, beim Setzen wird sich automatisch an/abgemeldet.
 		/// </summary>
-		public TimelineSteuerung steuerung
+		public TimelineManagment steuerung
 			{
 			get { return m_steuerung; }
 			set
@@ -119,10 +119,10 @@ namespace CityTrafficSimulator
 				m_steuerung = value;
 				if (m_steuerung != null)
 					{
-					m_steuerung.CurrentTimeChanged += new TimelineSteuerung.CurrentTimeChangedEventHandler(m_steuerung_CurrentTimeChanged);
-					m_steuerung.EntryChanged += new TimelineSteuerung.EntryChangedEventHandler(m_steuerung_EntryChanged);
-					m_steuerung.GroupsChanged += new TimelineSteuerung.GroupsChangedEventHandler(m_steuerung_GroupsChanged);
-					m_steuerung.MaxTimeChanged += new TimelineSteuerung.MaxTimeChangedEventHandler(m_steuerung_MaxTimeChanged);
+					m_steuerung.CurrentTimeChanged += new TimelineManagment.CurrentTimeChangedEventHandler(m_steuerung_CurrentTimeChanged);
+					m_steuerung.EntryChanged += new TimelineManagment.EntryChangedEventHandler(m_steuerung_EntryChanged);
+					m_steuerung.GroupsChanged += new TimelineManagment.GroupsChangedEventHandler(m_steuerung_GroupsChanged);
+					m_steuerung.MaxTimeChanged += new TimelineManagment.MaxTimeChangedEventHandler(m_steuerung_MaxTimeChanged);
 					}
 				}
 			}
@@ -139,12 +139,12 @@ namespace CityTrafficSimulator
 			Invalidate();
 			}
 
-		void m_steuerung_EntryChanged(object sender, TimelineSteuerung.EntryChangedEventArgs e)
+		void m_steuerung_EntryChanged(object sender, TimelineManagment.EntryChangedEventArgs e)
 			{
 			Invalidate();
 			}
 
-		void m_steuerung_CurrentTimeChanged(object sender, TimelineSteuerung.CurrentTimeChangedEventArgs e)
+		void m_steuerung_CurrentTimeChanged(object sender, TimelineManagment.CurrentTimeChangedEventArgs e)
 			{
 			timelineBarTime = e.currentTime;
 			Invalidate();

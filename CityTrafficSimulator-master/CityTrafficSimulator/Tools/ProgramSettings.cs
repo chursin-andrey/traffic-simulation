@@ -77,7 +77,7 @@ namespace CityTrafficSimulator.Tools
 		/// <summary>
 		/// Render Options for Main Canvas
 		/// </summary>
-		public NodeSteuerung.RenderOptions _renderOptions;
+		public NodeManagment.RenderOptions _renderOptions;
 
 		/// <summary>
 		/// ColorMap for Velocity Mapping

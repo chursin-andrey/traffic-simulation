@@ -1,22 +1,4 @@
-﻿/*
- *  CityTrafficSimulator - a tool to simulate traffic in urban areas and on intersections
- *  Copyright (C) 2005-2014, Christian Schulte zu Berge
- *  
- *  This program is free software; you can redistribute it and/or modify it under the 
- *  terms of the GNU General Public License as published by the Free Software 
- *  Foundation; either version 3 of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
- *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- *  PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with this 
- *  program; if not, see <http://www.gnu.org/licenses/>.
- * 
- *  Web:  http://www.cszb.net
- *  Mail: software@cszb.net
- */
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -35,42 +17,42 @@ using CityTrafficSimulator.Tools;
 namespace CityTrafficSimulator
 	{
 	/// <summary>
-	/// Speichert/Lädt den aktuellen Zustand der nodeSteuerung und timelineSteuerung in/aus eine(r) XML-Datei
+        /// Сохраняет / загружает текущее состояние nodeManagment и timelineManagment в/из XML-данные
 	/// </summary>
 	public static class XmlSaver
 		{
 
 		/// <summary>
-		/// Speichert den aktuellen Zustand der nodeSteuerung und timelineSteuerung in die XML-Datei filename
+            /// Сохраняте текущее состояние nodeManagment и timelineManagment в XML-данные filename
 		/// </summary>
-		/// <param name="filename">Dateiname der zu speichernden Datei</param>
-		/// <param name="nodeSteuerung">NodeSteuerung</param>
-		/// <param name="timelineSteuerung">TimelineSteuerung</param>
-		/// <param name="trafficVolumeSteuerung">VerkehrSteuerung</param>
+            /// <param name="filename">Имя файла сохраняемого файла</param>
+            /// <param name="nodeSteuerung">NodeManagment</param>
+            /// <param name="timelineSteuerung">TimelineManagment</param>
+            /// <param name="trafficVolumeSteuerung">VerkehrManagment</param>
 		/// <param name="ps">ProgramSettings</param>
-		public static void SaveToFile(string filename, NodeSteuerung nodeSteuerung, TimelineSteuerung timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung, ProgramSettings ps)
+		public static void SaveToFile(string filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung, ProgramSettings ps)
 			{
 			try
 				{
-				// erstma nen XMLWriter machen
+				// сначала задать имя для XMLWriter
 				XmlWriterSettings xws = new XmlWriterSettings();
 				xws.Indent = true;
 				xws.NewLineHandling = NewLineHandling.Entitize;
 
 				XmlWriter xw = XmlWriter.Create(filename, xws);
 
-				// leeren XmlSerializerNamespaces Namespace erstellen
+				// создать пустой XmlSerializerNamespaces Namespace
 				XmlSerializerNamespaces xsn = new XmlSerializerNamespaces();
 				xsn.Add("", "");
 
 				xw.WriteStartElement("CityTrafficSimulator");
 
-					// write saveVersion
+					// записать saveVersion
 					xw.WriteStartAttribute("saveVersion");
 					xw.WriteString("8");
 					xw.WriteEndAttribute();
 
-					// serialize program settings
+                    // сериализовать параметры программы
 					XmlSerializer xsPS = new XmlSerializer(typeof(ProgramSettings));
 					xsPS.Serialize(xw, ps, xsn);
 
@@ -92,13 +74,13 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Läd eine XML Datei und versucht daraus den gespeicherten Zustand wiederherzustellen
+        /// Загрузка данных XML и попытаться их из сохраненного состояния, восстановить
 		/// </summary>
-		/// <param name="filename">Dateiname der zu ladenden Datei</param>
-		/// <param name="nodeSteuerung">NodeSteuerung in das Layout eingelesen werden soll</param>
-		/// <param name="timelineSteuerung">TimelineSteuerung in die die LSA eingelesen werden soll</param>
-		/// <param name="trafficVolumeSteuerung">VerkehrSteurung to load into</param>
-		public static ProgramSettings LoadFromFile(String filename, NodeSteuerung nodeSteuerung, TimelineSteuerung timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung)
+        /// <param name="filename">Имя файла загружаемого файла</param>
+        /// <param name="nodeSteuerung">NodeManagment должно быть вставлено в Layout</param>
+        /// <param name="timelineSteuerung">TimelineManagment должно быть вставлено в LSA</param>
+        /// <param name="trafficVolumeSteuerung">TrafficManagment загрузить в</param>
+		public static ProgramSettings LoadFromFile(String filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung)
 			{
 			LoadingForm.LoadingForm lf = new LoadingForm.LoadingForm();
 			lf.Text = "Loading file '" + filename + "'...";
@@ -106,11 +88,11 @@ namespace CityTrafficSimulator
 
 			lf.SetupUpperProgress("Loading Document...", 8);
 
-			// Dokument laden
+			// Документ загружен
 			XmlDocument xd = new XmlDocument();
 			xd.Load(filename);
 
-			// parse save file version
+			// разобрать, сохранить версию файла
 			int saveVersion = 0;
 			XmlNode mainNode = xd.SelectSingleNode("//CityTrafficSimulator");
 			XmlNode saveVersionNode = mainNode.Attributes.GetNamedItem("saveVersion");
@@ -129,7 +111,7 @@ namespace CityTrafficSimulator
 				}
 			else
 				{
-				// set some okay default settings
+                    // установить некоторые хорошие параметры по умолчанию
 				ps = new ProgramSettings();
 
 				ps._simSpeed = 1;
@@ -144,7 +126,7 @@ namespace CityTrafficSimulator
 				ps._renderVelocityMapping = false;
 				ps._showFPS = false;
 
-				ps._renderOptions = new NodeSteuerung.RenderOptions();
+				ps._renderOptions = new NodeManagment.RenderOptions();
 				ps._renderOptions.renderLineNodes = true;
 				ps._renderOptions.renderNodeConnections = true;
 				ps._renderOptions.renderVehicles = true;
@@ -164,7 +146,7 @@ namespace CityTrafficSimulator
 				}
 			
 			lf.StepUpperProgress("Parsing Network Layout...");
-			List<Auftrag> toReturn = nodeSteuerung.LoadFromFile(xd, lf);
+			List<ModelManager> toReturn = nodeSteuerung.LoadFromFile(xd, lf);
 
 			lf.StepUpperProgress("Parsing Singnals...");
 			timelineSteuerung.LoadFromFile(xd, nodeSteuerung.nodes, lf);

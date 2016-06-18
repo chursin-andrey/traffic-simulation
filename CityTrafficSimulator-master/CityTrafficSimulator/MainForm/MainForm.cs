@@ -205,7 +205,7 @@ namespace CityTrafficSimulator
 			/// <summary>
 			/// Reference to the NodeSteuerung controlling the network layers
 			/// </summary>
-			private NodeSteuerung _nodeController;
+			private NodeManagment _nodeController;
 
 			/// <summary>
 			/// Reference to base NetworkLayer
@@ -236,7 +236,7 @@ namespace CityTrafficSimulator
 			/// </summary>
 			/// <param name="ns">Reference to the NodeSteuerung controlling the network layers</param>
 			/// <param name="nl">Reference to base NetworkLayer to create GUI elements for</param>
-			public NetworkLayerGUI(NodeSteuerung ns, NetworkLayer nl)
+			public NetworkLayerGUI(NodeManagment ns, NetworkLayer nl)
 				{
 				_nodeController = ns;
 				_networkLayer = nl;
@@ -329,11 +329,11 @@ namespace CityTrafficSimulator
 			nodeSteuerung.AddNetworkLayer("Layer " + (nodeSteuerung._networkLayers.Count + 1).ToString(), true);
 			}
 
-		void nodeSteuerung_NetworkLayersChanged(object sender, NodeSteuerung.NetworkLayersChangedEventArgs e)
+		void nodeSteuerung_NetworkLayersChanged(object sender, NodeManagment.NetworkLayersChangedEventArgs e)
 			{
 			switch (e._invalidationLevel)
 				{
-				case NodeSteuerung.NetworkLayersChangedEventArgs.InvalidationLevel.ONLY_VISIBILITY_CHANGED:
+				case NodeManagment.NetworkLayersChangedEventArgs.InvalidationLevel.ONLY_VISIBILITY_CHANGED:
 					Invalidate(InvalidationLevel.ONLY_MAIN_CANVAS);
 					break;
 				default:
@@ -377,8 +377,8 @@ namespace CityTrafficSimulator
 
 		private bool dockToGrid = false;
 
-		private NodeSteuerung.RenderOptions renderOptionsDaGrid = new NodeSteuerung.RenderOptions();
-		private NodeSteuerung.RenderOptions renderOptionsThumbnail = new NodeSteuerung.RenderOptions();
+		private NodeManagment.RenderOptions renderOptionsDaGrid = new NodeManagment.RenderOptions();
+		private NodeManagment.RenderOptions renderOptionsThumbnail = new NodeManagment.RenderOptions();
 		
 		private Bitmap backgroundImage;
 		private Bitmap resampledBackgroundImage;
@@ -464,12 +464,12 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// NodeSteuerung
 		/// </summary>
-		public NodeSteuerung nodeSteuerung = new NodeSteuerung();
+		public NodeManagment nodeSteuerung = new NodeManagment();
 
 		/// <summary>
 		/// TimelineSteuerung
 		/// </summary>
-		private TimelineSteuerung timelineSteuerung = new TimelineSteuerung();
+		private TimelineManagment timelineSteuerung = new TimelineManagment();
 
 		/// <summary>
 		/// TrafficVolumeSteuerung
@@ -659,10 +659,10 @@ namespace CityTrafficSimulator
 			trafficLightTreeView.steuerung = timelineSteuerung;
 			trafficLightForm.SelectedEntryChanged += new TrafficLightForm.SelectedEntryChangedEventHandler(trafficLightForm_SelectedEntryChanged);
 
-			timelineSteuerung.CurrentTimeChanged += new TimelineSteuerung.CurrentTimeChangedEventHandler(timelineSteuerung_CurrentTimeChanged);
-			timelineSteuerung.MaxTimeChanged += new TimelineSteuerung.MaxTimeChangedEventHandler(timelineSteuerung_MaxTimeChanged);
+			timelineSteuerung.CurrentTimeChanged += new TimelineManagment.CurrentTimeChangedEventHandler(timelineSteuerung_CurrentTimeChanged);
+			timelineSteuerung.MaxTimeChanged += new TimelineManagment.MaxTimeChangedEventHandler(timelineSteuerung_MaxTimeChanged);
 
-			nodeSteuerung.NetworkLayersChanged += new NodeSteuerung.NetworkLayersChangedEventHandler(nodeSteuerung_NetworkLayersChanged);
+			nodeSteuerung.NetworkLayersChanged += new NodeManagment.NetworkLayersChangedEventHandler(nodeSteuerung_NetworkLayersChanged);
 			nodeSteuerung.AddNetworkLayer("Layer 1", true);
 
 			zoomComboBox.SelectedIndex = 7;
@@ -760,7 +760,7 @@ namespace CityTrafficSimulator
 				}
 			}
 
-		private void timelineSteuerung_CurrentTimeChanged(object sender, TimelineSteuerung.CurrentTimeChangedEventArgs e)
+		private void timelineSteuerung_CurrentTimeChanged(object sender, TimelineManagment.CurrentTimeChangedEventArgs e)
 			{
 			DaGrid.Invalidate();
 			}

@@ -36,11 +36,11 @@ namespace CityTrafficSimulator.Timeline
 		/// <summary>
 		/// zugeordnete TimelineSteuerung
 		/// </summary>
-		private TimelineSteuerung m_steuerung;
+		private TimelineManagment m_steuerung;
 		/// <summary>
 		/// zugeordnete TimelineSteuerung, beim Setzen wird sich automatisch an/abgemeldet.
 		/// </summary>
-		public TimelineSteuerung steuerung
+		public TimelineManagment steuerung
 			{
 			get { return m_steuerung; }
 			set 
@@ -53,8 +53,8 @@ namespace CityTrafficSimulator.Timeline
 				m_steuerung = value;
 				if (m_steuerung != null)
 					{
-					m_steuerung.EntryChanged += new TimelineSteuerung.EntryChangedEventHandler(m_steuerung_EntryChanged);
-					m_steuerung.GroupsChanged += new TimelineSteuerung.GroupsChangedEventHandler(m_steuerung_GroupsChanged);
+					m_steuerung.EntryChanged += new TimelineManagment.EntryChangedEventHandler(m_steuerung_EntryChanged);
+					m_steuerung.GroupsChanged += new TimelineManagment.GroupsChangedEventHandler(m_steuerung_GroupsChanged);
 					}
 					
 				}
@@ -65,7 +65,7 @@ namespace CityTrafficSimulator.Timeline
 			UpdateTreeViewData();
 			}
 
-		void m_steuerung_EntryChanged(object sender, TimelineSteuerung.EntryChangedEventArgs e)
+		void m_steuerung_EntryChanged(object sender, TimelineManagment.EntryChangedEventArgs e)
 			{
 			// Gruppen und darin enthaltenen Entries mit e.affectedEntry vergleichen
 			foreach (TreeNode groupNode in Nodes)

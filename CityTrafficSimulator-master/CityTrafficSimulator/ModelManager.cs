@@ -13,7 +13,7 @@ namespace CityTrafficSimulator
     /// Damit ist festgelegter Fartauftrag für Autos von LineNode nach LineNode in einer bestimmten Häufigkeit
     /// </summary>
 	[Serializable]
-    public class Auftrag : ITickable, ISavable
+    public class ModelManager : ITickable, ISavable
         {
 		/// <summary>
 		/// Multiplikator für Fahrzeuge/Stunde
@@ -109,7 +109,7 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// Leerer Konstruktor (NICHT VERWENDEN! - NUR FÜR SERIALISIERUNG)
 		/// </summary>
-        public Auftrag()
+        public ModelManager()
             {
             }
 
@@ -120,7 +120,7 @@ namespace CityTrafficSimulator
 		/// <param name="startNodes">Liste von Startknoten</param>
 		/// <param name="endNodes">Liste von Zielknoten</param>
 		/// <param name="trafficDensity">Häufigkeit in Ticks</param>
-		public Auftrag(IVehicle.VehicleTypes vehicleType, List<LineNode> startNodes, List<LineNode> endNodes, int trafficDensity)
+		public ModelManager(IVehicle.VehicleTypes vehicleType, List<LineNode> startNodes, List<LineNode> endNodes, int trafficDensity)
             {
 			this.m_vehicleType = vehicleType;
 

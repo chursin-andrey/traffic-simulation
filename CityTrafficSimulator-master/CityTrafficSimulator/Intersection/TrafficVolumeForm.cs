@@ -46,7 +46,7 @@ namespace CityTrafficSimulator.Verkehr
 		/// <summary>
 		/// Reference to NodeSteuerung
 		/// </summary>
-		private NodeSteuerung m_nodeController;
+		private NodeManagment m_nodeController;
 
 		/// <summary>
 		/// Traffic Volume of the currently selected route
@@ -61,12 +61,12 @@ namespace CityTrafficSimulator.Verkehr
 		/// <summary>
 		/// Render options for thumbnail view
 		/// </summary>
-		private NodeSteuerung.RenderOptions renderOptions = new NodeSteuerung.RenderOptions();
+		private NodeManagment.RenderOptions renderOptions = new NodeManagment.RenderOptions();
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public TrafficVolumeForm(VerkehrSteuerung steuerung, MainForm mainForm, NodeSteuerung nodeController)
+		public TrafficVolumeForm(VerkehrSteuerung steuerung, MainForm mainForm, NodeManagment nodeController)
 			{
 			this.m_steuerung = steuerung;
 			this.m_mainForm = mainForm;

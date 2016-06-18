@@ -19,7 +19,7 @@
 
 namespace CityTrafficSimulator
     {
-    partial class RechenkaestchenControl
+    partial class ComputingBoxControl
         {
         /// <summary> 
         /// Erforderliche Designervariable.

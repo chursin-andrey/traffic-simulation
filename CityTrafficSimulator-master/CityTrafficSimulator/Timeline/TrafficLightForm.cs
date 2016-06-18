@@ -46,7 +46,7 @@ namespace CityTrafficSimulator.Timeline
 		/// <summary>
 		/// zugeordnete TimelineSteuerung
 		/// </summary>
-		private TimelineSteuerung steuerung;
+		private TimelineManagment steuerung;
 
 		/// <summary>
 		/// selected entry in timeline control
@@ -62,14 +62,14 @@ namespace CityTrafficSimulator.Timeline
 		/// Standardkonstruktor
 		/// </summary>
 		/// <param name="steuerung">TimelineSteuerung die die Informationen zur Anzeige enthält</param>
-		public TrafficLightForm(TimelineSteuerung steuerung)
+		public TrafficLightForm(TimelineManagment steuerung)
 			{
 			this.steuerung = steuerung;
 			InitializeComponent();
 			this.splitContainer1.Panel2MinSize = 220;
 			timelineControl.steuerung = steuerung;
-			steuerung.GroupsChanged += new TimelineSteuerung.GroupsChangedEventHandler(steuerung_GroupsChanged);
-			steuerung.MaxTimeChanged += new TimelineSteuerung.MaxTimeChangedEventHandler(steuerung_MaxTimeChanged);
+			steuerung.GroupsChanged += new TimelineManagment.GroupsChangedEventHandler(steuerung_GroupsChanged);
+			steuerung.MaxTimeChanged += new TimelineManagment.MaxTimeChangedEventHandler(steuerung_MaxTimeChanged);
 			timelineControl.SelectionChanged += new TimelineControl.SelectionChangedEventHandler(timelineControl_SelectionChanged);
 			cycleTimeSpinEdit.Value = (decimal)steuerung.maxTime;
 			}

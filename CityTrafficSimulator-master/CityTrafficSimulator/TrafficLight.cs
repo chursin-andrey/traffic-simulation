@@ -1,23 +1,4 @@
-﻿/*
- *  CityTrafficSimulator - a tool to simulate traffic in urban areas and on intersections
- *  Copyright (C) 2005-2014, Christian Schulte zu Berge
- *  
- *  This program is free software; you can redistribute it and/or modify it under the 
- *  terms of the GNU General Public License as published by the Free Software 
- *  Foundation; either version 3 of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
- *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- *  PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with this 
- *  program; if not, see <http://www.gnu.org/licenses/>.
- * 
- *  Web:  http://www.cszb.net
- *  Mail: software@cszb.net
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
@@ -29,33 +10,33 @@ using CityTrafficSimulator.Timeline;
 namespace CityTrafficSimulator
     {
 	/// <summary>
-	/// Kapselt eine Ampel und implementiert ein TimelineEntry
+        /// Инкапсулирует светофор и осуществляет запись на TimelineEntry
 	/// </summary>
     [Serializable]
     public class TrafficLight : TimelineEntry, ISavable
         {
 		/// <summary>
-		/// Status einer Ampel (rot oder grün)
+		/// Статус светофора (красный или зеленый)
 		/// </summary>
         public enum State {
 			/// <summary>
-			/// grüne Ampel
+			/// зеленый цвет светофора
 			/// </summary>
             GREEN, 
 
 			/// <summary>
-			/// rote Ampel
+            /// красный цвет светофора
 			/// </summary>
 			RED
             }
 
 
 		/// <summary>
-		/// aktueller Status der Ampel
+		/// текущее состояние светофора
 		/// </summary>
 		private State _trafficLightState;
 		/// <summary>
-		/// aktueller Status der Ampel
+        /// текущее состояние светофора
 		/// </summary>
 		[XmlIgnore]
         public State trafficLightState
@@ -65,13 +46,13 @@ namespace CityTrafficSimulator
             }
 
 		/// <summary>
-		/// Liste von LineNodes denen dieses TrafficLight zugeordnet ist
+		/// Список LineNodes к которым данный TrafficLight относится
 		/// </summary>
 		[XmlIgnore]
 		private List<LineNode> _assignedNodes = new List<LineNode>();
 
 		/// <summary>
-		/// Liste von LineNodes denen dieses TrafficLight zugeordnet ist
+        /// Список LineNodes к которым данный TrafficLight относится
 		/// </summary>
 		[XmlIgnore]
 		public List<LineNode> assignedNodes
@@ -209,9 +190,9 @@ namespace CityTrafficSimulator
         #endregion
 
 		/// <summary>
-		/// meldet den LineNode ln bei diesem TrafficLight an, sodass es weiß das es diesem zugeordnet ist
+        /// сообщает LineNode ln при TrafficLight таким путем, что он знает что он с ним связан
 		/// </summary>
-		/// <param name="ln">anzumeldender LineNode</param>
+		/// <param name="ln">заявляемый LineNode</param>
 		public void AddAssignedLineNode(LineNode ln)
 			{
 			_assignedNodes.Add(ln);
@@ -219,10 +200,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// meldet den LineNode ln bei diesem TrafficLight wieder ab, sodass es weiß, dass es diesem nicht mehr zugeordnet ist
+        /// сообщает LineNode ln при TrafficLight, так что он знает, что он больше не связан с ним
 		/// </summary>
-		/// <param name="ln">abzumeldender LineNode</param>
-		/// <returns>true, falls der Abmeldevorgang erfolgreich, sonst false</returns>
+        /// <param name="ln">anzumeldender LineNode</param>
+        /// <returns>true, если процесс выхода из системы успешен, в противном случае false</returns>
 		public bool RemoveAssignedLineNode(LineNode ln)
 			{
 			if (ln != null)
@@ -234,14 +215,14 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// stellt die Ampel auf grün
+		/// загорелся зеленый цвет светофора
 		/// </summary>
 		public void SwitchToGreen()
 			{
 			this.trafficLightState = State.GREEN;
 			}
 		/// <summary>
-		/// stellt die Ampel auf rot
+        /// загорелся красный цвет светофора
 		/// </summary>
 		public void SwitchToRed()
 			{
@@ -250,7 +231,7 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// meldet das TrafficLight bei den zugeordneten LineNodes ab, sodas das TrafficLight gefahrlos gelöscht werden kann.
+		/// отчетность от TrafficLight на относящемуся ему LineNodes, таким образом, что TrafficLight может быть безапасно удален.
 		/// </summary>
 		public override void Dispose()
 			{

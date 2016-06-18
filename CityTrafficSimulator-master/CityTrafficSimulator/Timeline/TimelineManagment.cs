@@ -33,7 +33,7 @@ namespace CityTrafficSimulator.Timeline
 	/// <summary>
 	/// Klasse zur Steuerung der Timeline. Im Speziellen also Steuerung der TrafficLights.
 	/// </summary>
-	public class TimelineSteuerung
+	public class TimelineManagment
 		{
 
 		#region Variablen

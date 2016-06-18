@@ -1,21 +1,4 @@
-﻿/*
- *  CityTrafficSimulator - a tool to simulate traffic in urban areas and on intersections
- *  Copyright (C) 2005-2014, Christian Schulte zu Berge
- *  
- *  This program is free software; you can redistribute it and/or modify it under the 
- *  terms of the GNU General Public License as published by the Free Software 
- *  Foundation; either version 3 of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
- *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- *  PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with this 
- *  program; if not, see <http://www.gnu.org/licenses/>.
- * 
- *  Web:  http://www.cszb.net
- *  Mail: software@cszb.net
- */
+﻿/
 
 using System;
 using System.Diagnostics;
@@ -27,7 +10,7 @@ using CityTrafficSimulator.Vehicle;
 namespace CityTrafficSimulator
 	{
 	/// <summary>
-	/// Klasse zur Kapselung eines Schnittpunktes zweier NodeConnections A und B
+	/// Класс для инкапсуляции пересечения двух NodeConnections A и B
 	/// </summary>
 	public class Intersection
 		{
@@ -493,7 +476,7 @@ namespace CityTrafficSimulator
 
 
 	/// <summary>
-	/// kapselt eine nodeConnection und eine zugehörige Intersection
+	/// инкапсулирует NodeConnection и сопутствующий Intersection
 	/// </summary>
 	public struct SpecificIntersection
 		{
@@ -503,15 +486,15 @@ namespace CityTrafficSimulator
 		public NodeConnection nodeConnection;
 
 		/// <summary>
-		/// Intersection, die an nodeConnection liegt
+		/// Intersection, расположенный на nodeConnection
 		/// </summary>
 		public Intersection intersection;
 
 		/// <summary>
-		/// Standardkonstruktor
+		/// Standardkonstruktor - конструктор по умолчанию, только на англ Standartconstructor
 		/// </summary>
 		/// <param name="nc">NodeConnection</param>
-		/// <param name="i">Intersection, die an nc liegt</param>
+		/// <param name="i">Intersection, расположенный на nc </param>
 		public SpecificIntersection(NodeConnection nc, Intersection i)
 			{
 			nodeConnection = nc;
@@ -519,10 +502,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Überprüft zwei SpecificIntersections auf Gleichheit
+		/// проверяет два SpecificIntersections на равенство
 		/// </summary>
-		/// <param name="a">erste zu untersuchente SpecificIntersection</param>
-		/// <param name="b">zweite zu untersuchente SpecificIntersection</param>
+		/// <param name="a">сначала изучить SpecificIntersection</param>
+		/// <param name="b">вторым рассмотреть SpecificIntersection</param>
 		/// <returns>(a.intersection == b.intersection AND a.nodeConnection == b.nodeConnection)</returns>
 		public static bool Equals(SpecificIntersection a, SpecificIntersection b)
 			{
@@ -531,38 +514,38 @@ namespace CityTrafficSimulator
 		}
 
 	/// <summary>
-	/// Struct encapsulating the original arriving times and blocking times of a vehicle that is going to cross an intersection.
-	/// Vehicle, Intersection and NodeConnection must be determined by context.
+	/// Struct инкапсулирует исходные данные (разы) прибывания и блокирования транспортного средства, которое собирается пересечь перекресток.
+	/// Vehicle, Intersection и NodeConnection должны определяться по контексту.
 	/// </summary>
 	public struct CrossingVehicleTimes
 		{
 		/// <summary>
-		/// Time when the vehicle originally planned to arrive at the intersection.
+		/// Время, когда транспортное средство первоначально планировало, прибыть на перекресток.
 		/// </summary>
 		public double originalArrivingTime;
 
 		/// <summary>
-		/// Remaining distance of the vehicle to the intersection.
+		/// Оставшееся расстояние от транспортного средства до перекрестка.
 		/// </summary>
 		public double remainingDistance;
 
 		/// <summary>
-		/// Time interval when the vehicle is going to block the intersection.
+		/// Временной промежуток, когда транспортное средство собирается блокировать перекресток.
 		/// </summary>
 		public Interval<double> blockingTime;
 
 		/// <summary>
-		/// Flag whether vehicle will wait befor intersection or proceed crossing it.
+		/// Знак, будет ли автомобиль ждать перед перекрестком или будет пересекать.
 		/// </summary>
 		public bool willWaitInFrontOfIntersection;
 
 		/// <summary>
-		/// Constructor.
+		/// Constructor - конструктор
 		/// </summary>
-		/// <param name="originalArrivingTime">Time when the vehicle originally planned to arrive at the intersection.</param>
-		/// <param name="remainingDistance">Remaining distance of the vehicle to the intersection.</param>
-		/// <param name="blockingTime">Time interval when the vehicle is going to block the intersection.</param>
-		/// <param name="willWaitInFrontOfIntersection">Flag whether vehicle will wait befor intersection or proceed crossing it.</param>
+		/// <param name="originalArrivingTime">Время, когда транспортное средство первоначально планировало, прибыть на перекресток.</param>
+		/// <param name="remainingDistance">Оставшееся расстояние от транспортного средства до перекрестка.</param>
+		/// <param name="blockingTime">Временной промежуток, когда транспортное средство собирается блокировать перекресток.</param>
+		/// <param name="willWaitInFrontOfIntersection">Знак, будет ли автомобиль ждать перед перекрестком или будет пересекать.</param>
 		public CrossingVehicleTimes(double originalArrivingTime, double remainingDistance, Interval<double> blockingTime, bool willWaitInFrontOfIntersection)
 			{
 			this.originalArrivingTime = originalArrivingTime;

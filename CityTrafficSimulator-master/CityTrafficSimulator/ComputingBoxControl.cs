@@ -30,7 +30,7 @@ namespace CityTrafficSimulator
 	/// <summary>
 	/// Control welches ein Grid variabler Größe enthalten kann und Unterobjekte daran ausrichten kann
 	/// </summary>
-    public partial class RechenkaestchenControl : UserControl
+    public partial class ComputingBoxControl : UserControl
         {
         #region Variablen und Properties
 		/// <summary>
@@ -136,7 +136,7 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// Standardkonstruktor, initialisiert das Grid als DoubleBuffered
 		/// </summary>
-        public RechenkaestchenControl()
+        public ComputingBoxControl()
             {
             InitializeComponent();
 

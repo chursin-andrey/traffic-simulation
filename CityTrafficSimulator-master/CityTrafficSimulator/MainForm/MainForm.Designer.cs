@@ -136,8 +136,8 @@ namespace CityTrafficSimulator
 			this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.thumbGrid = new CityTrafficSimulator.RechenkaestchenControl();
-			this.DaGrid = new CityTrafficSimulator.RechenkaestchenControl();
+			this.thumbGrid = new CityTrafficSimulator.ComputingBoxControl();
+			this.DaGrid = new CityTrafficSimulator.ComputingBoxControl();
 			this.cmcVelocityMapping = new CityTrafficSimulator.Tools.ColorMapControl();
 			this.trafficLightTreeView = new CityTrafficSimulator.Timeline.TrafficLightTreeView(this.components);
 			this.pnlSimulationSetup.SuspendLayout();
@@ -1316,7 +1316,7 @@ namespace CityTrafficSimulator
         #endregion
 
 		private System.Windows.Forms.Timer timerSimulation;
-		private RechenkaestchenControl DaGrid;
+		private ComputingBoxControl DaGrid;
         private System.Windows.Forms.GroupBox HintergrundbildGroupBox;
         private System.Windows.Forms.Button BildLadenButton;
 		private System.Windows.Forms.TextBox backgroundImageEdit;
@@ -1376,7 +1376,7 @@ namespace CityTrafficSimulator
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel pnlMainGrid;
 		private System.Windows.Forms.Panel pnlSimulationSetup;
-		private RechenkaestchenControl thumbGrid;
+		private ComputingBoxControl thumbGrid;
 		private System.Windows.Forms.CheckBox cbRenderFps;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button btnSetWorldCoordinates;

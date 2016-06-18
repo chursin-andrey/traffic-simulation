@@ -91,7 +91,7 @@
     <Compile Include="AboutBox\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Auftrag.cs" />
+    <Compile Include="ModelManager.cs" />
     <Compile Include="GlobalRandom.cs" />
     <Compile Include="GlobalTime.cs" />
     <Compile Include="LoadingForm\LoadingForm.cs">
@@ -104,7 +104,7 @@
     <Compile Include="Routing.cs" />
     <Compile Include="Timeline\TimelineBlockingEvent.cs" />
     <Compile Include="Timeline\TimelineGroup.cs" />
-    <Compile Include="Timeline\TimelineSteuerung.cs" />
+    <Compile Include="Timeline\TimelineManagment.cs" />
     <Compile Include="Timeline\TrafficLightForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,7 +150,7 @@
     <Compile Include="LineNode.cs" />
     <Compile Include="LineSegment.cs" />
     <Compile Include="NodeConnection.cs" />
-    <Compile Include="NodeSteuerung.cs" />
+    <Compile Include="NodeManagment.cs" />
     <Compile Include="Timeline\TimelineEntry.cs" />
     <Compile Include="Timeline\TimelineEvent.cs" />
     <Compile Include="Timeline\TimelineControl.cs">
@@ -183,9 +183,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RechenkaestchenControl.resx">
+    <EmbeddedResource Include="ComputingBoxControl.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>RechenkaestchenControl.cs</DependentUpon>
+      <DependentUpon>ComputingBoxControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Timeline\TimelineControl.resx">
       <DependentUpon>TimelineControl.cs</DependentUpon>
@@ -199,7 +199,7 @@
       <DependentUpon>Colormap.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Verkehr\TrafficVolumeForm.resx">
+    <EmbeddedResource Include="Intersection\TrafficVolumeForm.resx">
       <DependentUpon>TrafficVolumeForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -217,26 +217,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RechenkaestchenControl.cs">
+    <Compile Include="ComputingBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RechenkaestchenControl.Designer.cs">
-      <DependentUpon>RechenkaestchenControl.cs</DependentUpon>
+    <Compile Include="ComputingBoxControl.Designer.cs">
+      <DependentUpon>ComputingBoxControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\Pair.cs" />
     <Compile Include="Tools\PriorityQueue.cs" />
     <Compile Include="TrafficLight.cs" />
     <Compile Include="Tools\Vector2.cs" />
     <Compile Include="Vehicle\VehicleDistance.cs" />
-    <Compile Include="Verkehr\BunchOfNodes.cs" />
-    <Compile Include="Verkehr\TrafficVolume.cs" />
-    <Compile Include="Verkehr\TrafficVolumeForm.cs">
+    <Compile Include="Intersection\BunchOfNodes.cs" />
+    <Compile Include="Intersection\TrafficVolume.cs" />
+    <Compile Include="Intersection\TrafficVolumeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Verkehr\TrafficVolumeForm.Designer.cs">
+    <Compile Include="Intersection\TrafficVolumeForm.Designer.cs">
       <DependentUpon>TrafficVolumeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Verkehr\VerkehrSteuerung.cs" />
+    <Compile Include="Intersection\TrafficManagment.cs" />
     <Compile Include="XmlSaver.cs" />
   </ItemGroup>
   <ItemGroup>

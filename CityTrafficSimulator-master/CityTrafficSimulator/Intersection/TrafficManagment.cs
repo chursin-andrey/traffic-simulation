@@ -344,9 +344,9 @@ namespace CityTrafficSimulator.Verkehr
 		/// Imports traffic volume from older file versions still containing "Aufträge"
 		/// </summary>
 		/// <param name="fahrauftraege">List of all "Aufträge" to import</param>
-		public void ImportOldTrafficVolumeData(List<Auftrag> fahrauftraege)
+		public void ImportOldTrafficVolumeData(List<ModelManager> fahrauftraege)
 			{
-			foreach (Auftrag a in fahrauftraege)
+			foreach (ModelManager a in fahrauftraege)
 				{
 				BunchOfNodes startBof = GetOrCreateEqualBoF(a.startNodes, startPoints);
 				BunchOfNodes destinationBof = GetOrCreateEqualBoF(a.endNodes, destinationPoints);

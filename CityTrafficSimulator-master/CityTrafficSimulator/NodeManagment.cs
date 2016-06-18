@@ -1,22 +1,4 @@
-﻿/*
- *  CityTrafficSimulator - a tool to simulate traffic in urban areas and on intersections
- *  Copyright (C) 2005-2014, Christian Schulte zu Berge
- *  
- *  This program is free software; you can redistribute it and/or modify it under the 
- *  terms of the GNU General Public License as published by the Free Software 
- *  Foundation; either version 3 of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
- *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- *  PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with this 
- *  program; if not, see <http://www.gnu.org/licenses/>.
- * 
- *  Web:  http://www.cszb.net
- *  Mail: software@cszb.net
- */
-
+﻿
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -35,7 +17,7 @@ namespace CityTrafficSimulator
 	/// <summary>
 	/// Klasse zur Steuerung von LineNodes, NodeConnections etc.
 	/// </summary>
-	public class NodeSteuerung : ISavable, ITickable
+	public class NodeManagment : ISavable, ITickable
 		{
 		#region Variablen und Felder
 
@@ -119,7 +101,7 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// leerer Standardkonstruktor
 		/// </summary>
-		public NodeSteuerung()
+		public NodeManagment()
 			{
 			_networkLayers = new List<NetworkLayer>();
 			}
@@ -1342,11 +1324,11 @@ namespace CityTrafficSimulator
 		/// </summary>
 		/// <param name="xd">XmlDocument mit den zu ladenden Daten</param>
 		/// <param name="lf">LoadingForm für Statusinformationen</param>
-		public List<Auftrag> LoadFromFile(XmlDocument xd, LoadingForm.LoadingForm lf)
+		public List<ModelManager> LoadFromFile(XmlDocument xd, LoadingForm.LoadingForm lf)
 			{
 			lf.SetupLowerProgess("Parsing XML...", 3);
 
-			List<Auftrag> toReturn = new List<Auftrag>();
+			List<ModelManager> toReturn = new List<ModelManager>();
 			int saveVersion = 0;
 
 			// erstma alles vorhandene löschen
@@ -1493,8 +1475,8 @@ namespace CityTrafficSimulator
 					// Node in einen TextReader packen
 					TextReader tr = new StringReader(aXmlNode.OuterXml);
 					// und Deserializen
-					XmlSerializer xs = new XmlSerializer(typeof(Auftrag));
-					Auftrag ln = (Auftrag)xs.Deserialize(tr);
+					XmlSerializer xs = new XmlSerializer(typeof(ModelManager));
+					ModelManager ln = (ModelManager)xs.Deserialize(tr);
 
 					// in alten Dateien wurde das Feld häufigkeit statt trafficDensity gespeichert. Da es dieses Feld heute nicht mehr gibt, müssen wir konvertieren:
 					if (saveVersion < 1)
@@ -1521,7 +1503,7 @@ namespace CityTrafficSimulator
 					}
 
 				// Nodes wiederherstellen
-				foreach (Auftrag a in toReturn)
+				foreach (ModelManager a in toReturn)
 					{
 					a.RecoverFromLoad(saveVersion, nodes);
 

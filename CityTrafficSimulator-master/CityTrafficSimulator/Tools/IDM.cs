@@ -5,7 +5,7 @@ using System.Text;
 namespace CityTrafficSimulator
     {
 	/// <summary>
-	/// abstrakte Klasse für das Intelligent Driver Model
+	/// абстрактный класс для Intelligent Driver Model
 	/// </summary>
     public abstract class IDM
         {
@@ -80,14 +80,14 @@ namespace CityTrafficSimulator
 		#endregion
 
 		/// <summary>
-		/// Berechnet den Wunschabstand nach dem IDM
+        /// Рассчитывает желаемое расстояние до IDM
 		/// </summary>
-		/// <param name="velocity">eigene Geschwindigkeit</param>
-		/// <param name="vDiff">Differenzgeschwindigkeit zum Vorausfahrenden Fahrzeug</param>
+		/// <param name="velocity">собственная скорость</param>
+        /// <param name="vDiff">Дифференциальная скорость до впереди идущего автомобиля автомобиля</param>
 		/// <returns></returns>
 		public double CalculateWantedDistance(double velocity, double vDiff)
 			{
-			// berechne s* = Wunschabstand
+                // вычислить s * = желаемое состояние
 			double ss = s0 + T * velocity + (velocity * vDiff) / (2 * Math.Sqrt(a * b));
 
 			if (ss < s0)
@@ -99,60 +99,60 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Berechnet die Beschleunigung frei nach dem IDM
+        /// Вычислить свободное ускорение после IDM 
 		/// http://www.cs.wm.edu/~coppit/csci435-spring2005/project/MOBIL.pdf
 		/// </summary>
-		/// <param name="velocity">aktuelle Geschwindigkei</param>
-		/// <param name="desiredVelocity">Wunschgeschwindigkeit</param>
-		/// <param name="distance">Distanz zum vorausfahrenden Fahrzeug</param>
-		/// <param name="vDiff">Geschwindigkeitsunterschied zum vorausfahrenden Fahrzeug</param>
+        /// <param name="velocity">текущая скорость</param>
+        /// <param name="desiredVelocity">желаемая скорость</param>
+        /// <param name="distance">Расстояние до впереди едущего автомобиля</param>
+        /// <param name="vDiff">Разница в скорости впереди едущего автомобиляg</param>
 		/// <returns></returns>
         public double CalculateAcceleration(double velocity, double desiredVelocity, double distance, double vDiff)
             {
-            // berechne s* = Wunschabstand
+                // вычислить s * = желаемое состояние
 			double ss = CalculateWantedDistance(velocity, vDiff);
 
-			// Neue Geschwindigkeit berechnen
+            // Вычислить новую скорость
             double vNeu = a * (1 - Math.Pow((velocity / desiredVelocity), 2) - Math2.Square(ss / distance));
 
             return vNeu;
             }
 
 		/// <summary>
-		/// Berechnet die Beschleunigung frei nach dem IDM, wenn kein Fahrzeug voraus fährt
+        /// Вычислить ускорение свободно после IDM, когда ни одно транспортное средство не выезжает вперед
 		/// </summary>
-		/// <param name="velocity">eigene Geschwindigkeit</param>
-		/// <param name="desiredVelocity">Wunschgeschwindigkeit</param>
+		/// <param name="velocity">собственная скорость</param>
+		/// <param name="desiredVelocity">желаемая скорость</param>
 		/// <returns></returns>
 		public double CalculateAcceleration(double velocity, double desiredVelocity)
 			{
-			// Neue Geschwindigkeit berechnen
+                // Вычислить новую скорость
 			double vNeu = a * (1 - Math.Pow((velocity / desiredVelocity), 2) );
 
 			return vNeu;
 			}
 
 		/// <summary>
-		/// Berechnet die Beschleunigung frei nach dem IDM mit dem Verfahren von Heun (Konsistenzordnung 2!)
+        /// Вычислить свободное ускорение  после IDM методом Гойна (консистенция порядка 2!)
 		/// http://www.cs.wm.edu/~coppit/csci435-spring2005/project/MOBIL.pdf
 		/// </summary>
-		/// <param name="velocity">aktuelle Geschwindigkei</param>
-		/// <param name="desiredVelocity">Wunschgeschwindigkeit</param>
-		/// <param name="distance">Distanz zum vorausfahrenden Fahrzeug</param>
-		/// <param name="vDiff">Geschwindigkeitsunterschied zum vorausfahrenden Fahrzeug</param>
+		/// <param name="velocity">текущая скорость</param>
+		/// <param name="desiredVelocity">желаемая скорость</param>
+		/// <param name="distance">Расстояние до впереди едущего автомобиля</param>
+        /// <param name="vDiff">Разница в скорости впереди едущего автомобиля</param>
 		/// <returns></returns>
 		public double CalculateAccelerationHeun(double velocity, double desiredVelocity, double distance, double vDiff)
 			{
-			// erste Näherung:
-				// berechne s* = Wunschabstand
+                // Первое приближение:
+                // вычислить s * = желаемое состояние
 				double ss1 = CalculateWantedDistance(velocity, vDiff);
-				// Neue Geschwindigkeit berechnen
+                // Вычислить новую скорость
 				double vNeu = a * (1 - Math.Pow((velocity / desiredVelocity), 2) - Math2.Square(ss1 / distance));
 
-			// zweite Näherung:
-				// berechne s* = Wunschabstand
+                // Второе приближение:
+                // вычислить s * = желаемое состояние
 				double ss2 = CalculateWantedDistance(velocity + vNeu, vDiff + vNeu);
-				// Neue Geschwindigkeit berechnen
+                // Вычислить новую скорость
 				vNeu += a * (1 - Math.Pow(((velocity + vNeu) / desiredVelocity), 2) - Math2.Square(ss2 / distance));
 
 			return vNeu/2;
@@ -161,17 +161,17 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Berechnet die Beschleunigung, wenn Wunschabstand schon bekannt nach dem IDM
+        /// Вычислить ускорение, если желаемое расстояние уже известно в IDM
 		/// </summary>
-		/// <param name="velocity">aktuelle Geschwindigkeit</param>
-		/// <param name="desiredVelocity">Wunschgeschwindigkeit</param>
-		/// <param name="distance">aktueller Abstand</param>
-		/// <param name="wantedDistance">Wunschabstand</param>
-		/// <param name="vDiff">Geschwindigkeitsdifferenz</param>
+		/// <param name="velocity">текущая скорость</param>
+		/// <param name="desiredVelocity">желаемая скорость</param>
+        /// <param name="distance">текущее расстояние</param>
+		/// <param name="wantedDistance">желаемое расстояние</param>
+        /// <param name="vDiff">разница в скорости</param>
 		/// <returns></returns>
 		public double CalculateAcceleration(double velocity, double desiredVelocity, double distance, double wantedDistance, double vDiff)
 			{
-			// Neue Geschwindigkeit berechnen
+                // Вычислить новую скорость
 			double vNeu = a * (1 - Math.Pow((velocity / desiredVelocity), 2) - Math2.Square(wantedDistance / distance));
 
 			return vNeu;

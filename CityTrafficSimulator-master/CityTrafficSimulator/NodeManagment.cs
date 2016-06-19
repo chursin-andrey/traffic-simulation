@@ -15,18 +15,18 @@ using CityTrafficSimulator.Tools;
 namespace CityTrafficSimulator
 	{
 	/// <summary>
-	/// Klasse zur Steuerung von LineNodes, NodeConnections etc.
+	/// Класс для управения LineNodes, NodeConnections etc.
 	/// </summary>
 	public class NodeManagment : ISavable, ITickable
 		{
 		#region Variablen und Felder
 
 		/// <summary>
-		/// alle verwendenten LineNodes
+		/// все используемые LineNodes
 		/// </summary>
 		private List<LineNode> _nodes = new List<LineNode>();
 		/// <summary>
-		/// alle verwendenten LineNodes
+        /// все используемые LineNodes
 		/// </summary>
 		public List<LineNode> nodes
 			{
@@ -35,11 +35,11 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// alle verwendeten NodeConnections
+        /// все используемые NodeConnections
 		/// </summary>
 		private List<NodeConnection> _connections = new List<NodeConnection>();
 		/// <summary>
-		/// alle verwendeten NodeConnections
+        /// все используемые NodeConnections
 		/// </summary>
 		public List<NodeConnection> connections
 			{
@@ -48,11 +48,11 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Liste aller bekannten Intersections
+		/// Список всех известных Intersections
 		/// </summary>
 		private List<Intersection> _intersections = new List<Intersection>();
 		/// <summary>
-		/// Liste aller bekannten Intersections
+        /// Список всех известных Intersections
 		/// </summary>
 		public List<Intersection> intersections
 			{
@@ -61,16 +61,16 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// List of all known network layers
+        /// Список всех известных сетевых уровней
 		/// </summary>
 		public List<NetworkLayer> _networkLayers { get; private set; }
 
 		/// <summary>
-		/// Titel dieses Layouts
+		/// Наименование данного Layouts
 		/// </summary>
 		private string m_title;
 		/// <summary>
-		/// Titel dieses Layouts
+        /// Наименование данного Layouts
 		/// </summary>
 		public string title
 			{
@@ -80,11 +80,11 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Informationstext zum Layout
+		/// Информационный текст Layout
 		/// </summary>
 		private string _infoText;
 		/// <summary>
-		/// Informationstext zum Layout
+        /// Информационный текст  Layout
 		/// </summary>
 		public string infoText
 			{
@@ -99,7 +99,7 @@ namespace CityTrafficSimulator
 		#region Konstruktoren
 
 		/// <summary>
-		/// leerer Standardkonstruktor
+		/// пустой конструктор по умолчанию
 		/// </summary>
 		public NodeManagment()
 			{
@@ -111,9 +111,9 @@ namespace CityTrafficSimulator
 		#region Methoden für LineNodes
 
 		/// <summary>
-		/// fügt einen LineNode hinzu
+		/// добавляет LineNode 
 		/// </summary>
-		/// <param name="ln">der hinzuzufügende LineNode</param>
+		/// <param name="ln">добавленная LineNode</param>
 		public void AddLineNode(LineNode ln)
 			{
 			nodes.Add(ln);
@@ -122,18 +122,18 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Löscht einen LineNode und alle damit verbundenen NodeConnections
+		/// удаляет LineNode и все связанные с ним NodeConnections
 		/// </summary>
-		/// <param name="ln">zu löschender LineNode</param>
+		/// <param name="ln">удаленнаяLineNode</param>
 		public void DeleteLineNode(LineNode ln)
 			{
-			// ausgehende NodeConnections löschen
+			// удалить иходящий NodeConnections
 			while (ln.nextConnections.Count > 0)
 				{
 				Disconnect(ln, ln.nextConnections[0].endNode);
 				}
 
-			// eingehende NodeConnections löschen
+			// удалить входящие NodeConnections
 			while (ln.prevConnections.Count > 0)
 				{
 				Disconnect(ln.prevConnections[0].startNode, ln);
@@ -145,17 +145,17 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// stellt eine NodeConnection von from nach to her
+		/// устанавливает NodeConnection от from до to
 		/// </summary>
-		/// <param name="from">LineNode von dem die NodeConnection ausgehen soll</param>
-		/// <param name="to">LineNode zu der die NodeConnection hingehen soll</param>
-		/// <param name="priority">Priorität der Linie</param>
-		/// <param name="targetVelocity">Target velocity on the NodeConnection</param>
-		/// <param name="carsAllowed">Flag, ob Autos auf dieser NodeConnection erlaubt sind</param>
-		/// <param name="busAllowed">Flag, ob Busse auf dieser NodeConnection erlaubt sind</param>
-		/// <param name="tramAllowed">Flag, ob Straßenbahnen auf dieser NodeConnection erlaubt sind</param>
-		/// <param name="enableIncomingLineChange">Flag, ob eingehende Spurwechsel erlaubt sind</param>
-		/// <param name="enableOutgoingLineChange">Flag, ob ausgehende Spurchwechsel erlaubt sind</param>
+		/// <param name="from">LineNode должна исходить от NodeConnection</param>
+		/// <param name="to">LineNode должен подходить к NodeConnection</param>
+        /// <param name="priority">Приоритет линии</param>
+		/// <param name="targetVelocity">Target velocity на NodeConnection</param>
+		/// <param name="carsAllowed">Знак, о разрешеннии машин на этом NodeConnection</param>
+        /// <param name="busAllowed">Знак, о разрешеннии автобусов на этом NodeConnection</param>
+        /// <param name="tramAllowed">Знак, о разрешеннии трамваев на этом NodeConnection</param>
+		/// <param name="enableIncomingLineChange">Знак, о разрешении входящей смены полосы движения</param>
+        /// <param name="enableOutgoingLineChange">Знак, о разрешении исходящей смены полосы движения</param>
 		public void Connect(LineNode from, LineNode to, int priority, double targetVelocity, bool carsAllowed, bool busAllowed, bool tramAllowed, bool enableIncomingLineChange, bool enableOutgoingLineChange)
 			{
 			NodeConnection nc = new NodeConnection(from, to, null, priority, targetVelocity, carsAllowed, busAllowed, tramAllowed, enableIncomingLineChange, enableOutgoingLineChange);
@@ -168,9 +168,9 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// setzt nextNodes und prevNodes bei den an nc teilnehmenden LineNodes
+		/// устанавливает nextNodes и prevNodes на nc участвующих LineNodes
 		/// </summary>
-		/// <param name="nc">NodeConnections die angemeldet werden soll</param>
+		/// <param name="nc">NodeConnections должны быть зарегистрированными</param>
 		private void TellNodesTheirConnection(NodeConnection nc)
 			{
 			nc.startNode.nextConnections.Add(nc);
@@ -178,25 +178,25 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// kappt die sämtliche bestehende NodeConnection zwischen from und to und sagt den Nodes auch Bescheid, dass diese nicht mehr bestehen
+		/// отрезает все существующие NodeConnection между from и to и говорит Nodes, а также принамаю с сведение, что они уже не применимы
 		/// </summary>
-		/// <param name="from">LineNode von dem die NodeConnection ausgeht</param>
-		/// <param name="to">LineNode zu der die NodeConnection hingehet</param>
+		/// <param name="from">LineNode от которых исходит NodeConnection</param>
+		/// <param name="to">LineNode в который входит NodeConnection</param>
 		public void Disconnect(LineNode from, LineNode to)
 			{
 			NodeConnection nc;
 			while ((nc = GetNodeConnection(from, to)) != null)
 				{
-				// Intersections löschen 
+				// Intersections удалить 
 				while (nc.intersections.Count > 0)
 					{
 					DestroyIntersection(nc.intersections.First.Value);
 					}
 
-				// LineChangePoints löschen, so sie denn exisitieren
+				// LineChangePoints удалить, если они существуют
 				RemoveLineChangePoints(nc, true, true);
 
-				// Connections lösen und löschen
+				// Connections решить и удалить
 				from.nextConnections.Remove(nc);
 				to.prevConnections.Remove(nc);
 				connections.Remove(nc);
@@ -204,9 +204,9 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Aktualisiert sämtliche NodeConnections, welche von nodeToUpdate ausgehen
+		/// Обновить все NodeConnections, исходящие из nodeToUpdate
 		/// </summary>
-		/// <param name="nodeToUpdate">LineNode dessen ausgehende NodeConencitons aktualisiert werden sollen</param>
+		/// <param name="nodeToUpdate">LineNode, чьи исходящие NodeConencitons должны быть обновлены</param>
 		public void UpdateOutgoingNodeConnections(LineNode nodeToUpdate)
 			{
 			foreach (NodeConnection nc in nodeToUpdate.nextConnections)
@@ -216,9 +216,9 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Aktualisiert sämtliche NodeConnections, welche in nodeToUpdate eingehen
+		/// Обновить все NodeConnections, входящие в nodeToUpdate
 		/// </summary>
-		/// <param name="nodeToUpdate">LineNode dessen eingehende NodeConencitons aktualisiert werden sollen</param>
+        /// <param name="nodeToUpdate">LineNode, чьи входящие NodeConencitons должны быть обновлены</param>
 		public void UpdateIncomingNodeConnections(LineNode nodeToUpdate)
 			{
 			foreach (NodeConnection nc in nodeToUpdate.prevConnections)
@@ -228,9 +228,9 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Aktualisiert sämtliche NodeConnections, welche mit nodeToUpdate verbunden sind
+		/// Обновить все NodeConnections, связанные с nodeToUpdate
 		/// </summary>
-		/// <param name="nodeToUpdate">LineNode dessen NodeConencitons aktualisiert werden sollen</param>
+		/// <param name="nodeToUpdate">LineNode, чьи NodeConencitons должны быть обновлены</param>
 		public void UpdateNodeConnections(LineNode nodeToUpdate)
 			{
 			UpdateIncomingNodeConnections(nodeToUpdate);
@@ -238,9 +238,9 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Aktualisiert sämtliche NodeConnections, welche mit LineNodes aus nodesToUpdate verbunden sind
+		/// Обновить все NodeConnections, связанные с LineNodes из nodesToUpdate
 		/// </summary>
-		/// <param name="nodesToUpdate">Liste von LineNoden dessen NodeConencitons aktualisiert werden sollen</param>
+		/// <param name="nodesToUpdate">Liste LineNoden чьи NodeConencitons должны быть обновлены</param>
 		public void UpdateNodeConnections(List<LineNode> nodesToUpdate)
 			{
 			foreach (LineNode ln in nodesToUpdate)
@@ -251,10 +251,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Gibt den LineNode zurück, der sich an der Position pos befindet
+		/// Возвращает LineNode, расположенная в позиции pos
 		/// </summary>
-		/// <param name="pos">Position an dem der LineNode liegen soll</param>
-		/// <returns>LineNode mit positionRect.Contains(pos) oder null falls kein solcher existiert</returns>
+		/// <param name="pos">Позиция должна быть там, где расположен LineNode</param>
+		/// <returns>LineNode с positionRect.Contains(pos) или null в случае таких не существует</returns>
 		public LineNode GetLineNodeAt(Vector2 pos)
 			{
 			foreach (LineNode ln in nodes)
@@ -268,10 +268,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Gibt die LineNodes zurück, die sich innerhalb des Rechteckes r befinden
+		/// Возвращает LineNodes, расположенные внутри прямоугольника r
 		/// </summary>
-		/// <param name="r">Suchrechteck</param>
-		/// <returns>Eine Liste von LineNodes, die sich innerhalb von r befinden</returns>
+		/// <param name="r">Поисковый прямоугольник</param>
+        /// <returns>Список LineNodes, находящиеся в пределах r</returns>
 		public List<LineNode> GetLineNodesAt(Rectangle r)
 			{
 			List<LineNode> toReturn = new List<LineNode>();
@@ -290,7 +290,7 @@ namespace CityTrafficSimulator
 		private RectangleF _nodeBounds;
 
 		/// <summary>
-		/// Returns the bounds of all handled LineNodes.
+        /// Возвращает границы всех обрабатываемых LineNodes.
 		/// </summary>
 		/// <returns></returns>
 		public RectangleF GetLineNodeBounds()
@@ -325,7 +325,7 @@ namespace CityTrafficSimulator
 		/// </summary>
 		public void InvalidateNodeBounds()
 			{
-			// TODO: replace with clean node handling/event pattern
+                // Список дел: заменить чистым узлом обработки/шаблон событий
 			_nodeBoundsValid = false;
 			}
 
@@ -334,9 +334,9 @@ namespace CityTrafficSimulator
 		#region Methoden für Intersections
 
 		/// <summary>
-		/// Zerstört die Intersection und meldet sie überall ab
+		/// Уничтожает Intersection и повсюду сообщает
 		/// </summary>
-		/// <param name="i">zu zerstörende Intersection</param>
+		/// <param name="i">к уничтоженным Intersection</param>
 		private void DestroyIntersection(Intersection i)
 			{
 			if (i != null)
@@ -347,10 +347,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// prüft, ob sich aRect und bRect echt überschneiden
+		/// проверяет, действительно ли пересикаются aRect и bRect
 		/// </summary>
-		/// <param name="aRect">erstes Rechteck</param>
-		/// <param name="bRect">zweites Rechteck</param>
+		/// <param name="aRect">первый прямоугольник</param>
+		/// <param name="bRect">второй прямоугольник</param>
 		/// <returns></returns>
 		private bool IntersectsTrue(RectangleF aRect, RectangleF bRect)
 			{
@@ -366,39 +366,39 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Führt zwei Listen mit Schnittpunktpaaren zusammen und eliminiert dabei doppelt gefundenen Schnittpunkte.
+		/// объединяет два списка вместе с парами пересечений и устраняет при этом найденные двойные пересечения.
 		/// </summary>
-		/// <param name="correctList">Liste mit bereits gefundenen und überprüften Schnittpunkte (darf keine doppelten Schnittpunkte enthalten)</param>
-		/// <param name="newList">Liste mit Schmittpunkten, die geprüft werden und evtl. eingefügt werden sollen</param>
-		/// <param name="aSegment">LineSegment des linken Teils der Paare</param>
-		/// <param name="bSegment">LineSegment des rechten Teils der Paare</param>
-		/// <param name="tolerance">Wie weit entfernt dürfen Paare von Schnittpunkten maximal sein, damit sie als doppelt erkannt werden sollen</param>
-		/// <returns>currectList, wo alle Schnittpunkte aus newList eingefügt worden sind, die mindestens tolerance von jedem anderen Schnittpunkt entfernt sind.</returns>
+		/// <param name="correctList">Список с найденными и перепроверенными пересечениями (не должно содержать двойных пересечений)</param>
+        /// <param name="newList">Список с пересечениями, которые будут проверяться и при необходимости включены</param>
+		/// <param name="aSegment">LineSegment левой части пары</param>
+		/// <param name="bSegment">LineSegment правой части пары</param>
+        /// <param name="tolerance">Как далеко должно быть до пар пересечений, что они могут быть признаны двойными</param>
+		/// <returns>currectList, где все пересечения вставлены из newList, который находится по меньшей мере tolerance от любого другого пересечения.</returns>
 		private List<Pair<double>> MergeIntersectionPairs(List<Pair<double>> correctList, List<Pair<double>> newList, LineSegment aSegment, LineSegment bSegment, double tolerance)
 			{
 			List<Pair<double>> toReturn = correctList;
 
-			// jedes Paar in newList anschauen
+			// смотреть каждую пару в newList
 			foreach (Pair<double> p in newList)
 				{
-				// Position der Intersection feststellen...
+				// установить позицию Intersection...
 				Vector2 positionOfP = aSegment.AtTime(p.Left);
 				bool doInsert = true;
 
-				// ...mit Position jeder Intersection in correctList vergleichen...
+				// ...сравненить позиции с каждым Intersection в correctList...
 				for (int i = 0; doInsert && i < correctList.Count; i++)
 					{
 					Vector2 foo = aSegment.AtTime(toReturn[i].Left);
 					if ((foo - positionOfP).Abs <= 8*tolerance)
 						{
-						// Wir haben einen doppelten gefunden, dann lass uns den Schnittpunkt in die Mitte verschieben
+                            // Мы нашли двойные пересечения, тогда переместим точку пересечения в середену
 						doInsert = false;
 
 						toReturn[i] = new Pair<double>(toReturn[i].Left + (p.Left - toReturn[i].Left) / 2, toReturn[i].Right + (p.Right - toReturn[i].Right) / 2);
 						}
 					}
 
-				// ...und evtl. einfügen :)
+				// ...и при случае вставить
 				if (doInsert) 
 					toReturn.Add(p);
 				}
@@ -408,18 +408,18 @@ namespace CityTrafficSimulator
 
 
 		/// <summary>
-		/// Findet alle Schnittpunkte zwischen aSegment und bSegment und gibt diese als Liste von Zeitpaaren zurück bei einer Genauigkeit von tolerance
+		/// Находить все отрезке Findet alle Schnittpunkte zwischen aSegment und bSegment und gibt diese als Liste von Zeitpaaren zurück bei einer Genauigkeit von tolerance
 		/// </summary>
-		/// <param name="aSegment">erstes LineSegment</param>
-		/// <param name="bSegment">zweites LineSegment</param>
+		/// <param name="aSegment">первый LineSegment</param>
+		/// <param name="bSegment">второй LineSegment</param>
 		/// <param name="aTimeStart"></param>
 		/// <param name="aTimeEnd"></param>
 		/// <param name="bTimeStart"></param>
 		/// <param name="bTimeEnd"></param>
-		/// <param name="tolerance">Genauigkeit der Überprüfung: minimale Kantenlänge der überprüften BoundingBox</param>
-		/// <param name="aOriginalSegment">ursprüngliches LineSegment A, bevor es aufgeteilt wurde</param>
-		/// <param name="bOriginalSegment">ursprüngliches LineSegment B, bevor es aufgeteilt wurde</param>
-		/// <returns>Eine Liste von Paaren wo sich ein Schnittpunkt befindet: Linker Teil Zeitparameter der ersten Kurve, rechter Teil Zeitparameter der zweiten Kurve</returns>
+        /// <param name="tolerance">Точность обзора: минимальная длина края проверяемого BoundingBox</param>
+		/// <param name="aOriginalSegment">оригинальный LineSegment A, прежде чем он был разделен</param>
+        /// <param name="bOriginalSegment">оригинальный LineSegment B, прежде чем он был разделен</param>
+		/// <returns>Список пар, где находится одно пересечение: левая часть временных параметров первой кривая, правая часть временных парамтров второй кривая</returns>
 		private List<Pair<double>> CalculateIntersections(
 			LineSegment aSegment, LineSegment bSegment,
 			double aTimeStart, double aTimeEnd,
@@ -429,23 +429,23 @@ namespace CityTrafficSimulator
 			{
 			List<Pair<double>> foundIntersections = new List<Pair<double>>();
 
-			// überprüfe rekursiv auf Schnittpunkte der BoundingBoxen:
-			// TODO: gehts vielleicht effizienter als rekursiv?
+			// проверить рекурсивно но пересечении BoundingBoxen:
+			// Список дел: возможно эфективнее чем рекурсивно? 
 
 			RectangleF aBounds = aSegment.boundingRectangle;// .GetBounds(0);
 			RectangleF bBounds = bSegment.boundingRectangle;// .GetBounds(0);
 
-			// schneiden sich die BoundingBoxen? dann lohnt sich eine nähere Untersuchung
+			// пересекаются BoundingBoxen? тогда стоит детально изучить
 			if (IntersectsTrue(aBounds, bBounds)) // aBounds.IntersectsWith(bBounds)) //IntersectsTrue(aBounds, bBounds)) // 
 				{
-				// sind beide BoundingBoxen schon kleiner als tolerance, dann haben wir einen Schnittpunkt gefunden
+				// обе BoundingBoxen еще меньше чем tolerance, то мы нашли точку пересечения
 				if ((aBounds.Width <= tolerance) && (aBounds.Height <= tolerance)
 						&& (bBounds.Width <= tolerance) && (bBounds.Height <= tolerance))
 					{
 					foundIntersections.Add(new Pair<double>(aTimeStart + ((aTimeEnd - aTimeStart) / 2), bTimeStart + ((bTimeEnd - bTimeStart) / 2)));
 					}
 
-				// BoundingBox A ist schon klein genug, aber BoundingBox B sollte nochmal näher untersucht werden:
+				// BoundingBox A уже достаточно мал, но BoundingBox B все ещё необходимо детально изучить:
 				else if ((aBounds.Width <= tolerance) && (aBounds.Height <= tolerance))
 					{
 					double bTimeMiddle = bTimeStart + ((bTimeEnd - bTimeStart) / 2);
@@ -465,7 +465,7 @@ namespace CityTrafficSimulator
 							aOriginalSegment, bOriginalSegment), aOriginalSegment, bOriginalSegment, 2*tolerance);
 					}
 
-				// BoundingBox B ist schon klein genug, aber BoundingBox A sollte nochmal näher untersucht werden:
+                // BoundingBox B еще достаточно мал, но BoundingBox A все ещё необходимо детально изучить:
 				else if ((bBounds.Width <= tolerance) && (bBounds.Height <= tolerance))
 					{
 					double aTimeMiddle = aTimeStart + ((aTimeEnd - aTimeStart) / 2);
@@ -484,7 +484,7 @@ namespace CityTrafficSimulator
 							aOriginalSegment, bOriginalSegment), aOriginalSegment, bOriginalSegment, 2 * tolerance);
 					}
 
-				// die BoundingBoxen sind noch zu groß - Linie aufteilen und die 2x2 Teile auf Schnittpunkte untersuchen
+				// BoundingBoxen слишком большие - разделить линии  и исследовать части 2x2 на перекресткеe
 				else
 					{
 					double aTimeMiddle = aTimeStart + ((aTimeEnd - aTimeStart) / 2);
@@ -519,8 +519,8 @@ namespace CityTrafficSimulator
 					}
 				}
 
-			// TODO: doppelte Schnittpunkte rausfiltern
-			// Nun filtern wir noich alle Schnittpunkte raus, die doppelt erkannt wurden:
+			// Список дел: двойные перекрестки отфильтровать
+            // Теперь мы отфильтровывать все перекрестки, которые были обнаружены дважды:
 			/*
 			for (int i = 0; i < foundIntersections.Count-1; i++)
 				{
@@ -928,9 +928,9 @@ namespace CityTrafficSimulator
 		#region Statistiken
 
 		/// <summary>
-		/// aktiviert die Visualisierung von Statistiken in NodeConnections
+        /// включена визуализация статистики в NodeConnections
 		/// </summary>
-		/// <param name="state">Status der Visualisierung der gesetzt werden soll</param>
+		/// <param name="state">Статус визуализации который необхоимо установить</param>
 		public void setVisualizationInNodeConnections(bool state)
 			{
 			foreach (NodeConnection nc in _connections)
@@ -1135,10 +1135,10 @@ namespace CityTrafficSimulator
 		#region NetworkLayer stuff
 
 		/// <summary>
-		/// Adds a render network layer with the given title.
+        /// Добавляет визуализации сетевого уровня с указанным заголовком.
 		/// </summary>
-		/// <param name="title">Title of the new render network layer</param>
-		/// <param name="visible">Visible flag of the new network layer</param>
+        /// <param name="title">Заголовок новой визуализации сетевого уровня</param>
+		/// <param name="visible">Видимый знак нового сетевого уровня</param>
 		public void AddNetworkLayer(string title, bool visible)
 			{
 			NetworkLayer nl = new NetworkLayer(title, visible);
@@ -1149,10 +1149,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Tries to remove the given NetworkLayer. Succeeds only, if <paramref name="nl"/> isn't assigned to any managed LineNode.
+		/// Пытается удалить данную NetworkLayer. Удается только, если <paramref name="nl"/> не назначен какой-либо управляемый LineNode.
 		/// </summary>
-		/// <param name="nl">NetworkLayer to remove</param>
-		/// <returns>True if nl was successfully deleted. False if nl is still assigned to at least one LineNode in _nodes.</returns>
+		/// <param name="nl">NetworkLayer удалить</param>
+		/// <returns>True, если nl успещно удален. False, если nl по прежнему назначен, по меньшей мере один LineNode in _nodes.</returns>
 		public bool RemoveNetworkLayer(NetworkLayer nl)
 			{
 			if (_networkLayers.Count <= 1)
@@ -1538,8 +1538,8 @@ namespace CityTrafficSimulator
 		#region ISavable Member
 
 		/// <summary>
-		/// Bereitet alles fürs Speichern vor
-		/// (Hashes generieren etc.)
+		/// подговтовить все необходимое для сохранения
+		/// (генироровать хэши etc.)
 		/// </summary>
 		public void PrepareForSave()
 			{
@@ -1554,10 +1554,10 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Stellt nach erfolgreicher Deserialisierung alle internen Links wieder her
+		/// Восстанавливает после успешной десериализации все внутренние ссылки снова
 		/// </summary>
-		/// <param name="saveVersion">Version der gespeicherten Datei</param>
-		/// <param name="nodesList">Liste der bereits wiederhergestellten LineNodes</param>
+		/// <param name="saveVersion">Version сохраненных данных</param>
+        /// <param name="nodesList">Список уже восстановленных LineNodes</param>
 		public void RecoverFromLoad(int saveVersion, List<LineNode> nodesList)
 			{
 			throw new NotImplementedException();
@@ -1568,7 +1568,7 @@ namespace CityTrafficSimulator
 		#region ITickable Member
 
 		/// <summary>
-		/// sagt allen verwalteten Objekten Bescheid, dass sie ticken dürfen *g*
+		/// говорить всем управляемым объектам связи, что они должны работать
 		/// </summary>
 		public void Tick(double tickLength)
 			{
@@ -1585,7 +1585,7 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// setzt den Tick-Zustand aller LineNodes zurück
+		/// сбрасывает состояние Tick всех LineNodes
 		/// </summary>
 		public void Reset()
 			{

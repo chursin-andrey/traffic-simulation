@@ -1,142 +1,123 @@
-﻿/*
- *  CityTrafficSimulator - a tool to simulate traffic in urban areas and on intersections
- *  Copyright (C) 2005-2014, Christian Schulte zu Berge
- *  
- *  This program is free software; you can redistribute it and/or modify it under the 
- *  terms of the GNU General Public License as published by the Free Software 
- *  Foundation; either version 3 of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but WITHOUT ANY 
- *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- *  PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with this 
- *  program; if not, see <http://www.gnu.org/licenses/>.
- * 
- *  Web:  http://www.cszb.net
- *  Mail: software@cszb.net
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CityTrafficSimulator
-	{
-	/// <summary>
-	/// Wegroute zu einem Zielknoten. Rückgabetyp des A*-Algorithmus
-	/// </summary>
-	public class Routing : IEnumerable<Routing.RouteSegment>
-		{
-		/// <summary>
-		/// Wegroute
+{
+    /// <summary>
+    /// Wegroute к узлу назначения. Возвращаемый тип алгоритма *
+    /// </summary>
+    public class Routing : IEnumerable<Routing.RouteSegment>
+    {
+        /// <summary>
+        /// Wegroute
+        /// </summary>
+        private LinkedList<RouteSegment> route;
+
+        /// <summary>
+        /// Стоимость всего маршрута
+        /// </summary>
+        public double costs;
+
+        /// <summary>
+        /// Количество требуемых изменений переулка
+        /// </summary>
+        public int countOfLineChanges;
+
+
+        /// <summary>
+        /// Standardkonstruktor (Конструктор по умолчанию) создает новый пустой Wegroute к узлу назначения
+        /// </summary>
+        public Routing()
+        {
+            route = new LinkedList<RouteSegment>();
+            costs = 0;
+            countOfLineChanges = 0;
+        }
+
+
+        /// <summary>
+        /// Заносит пройденный RouteSegment в стек маршрута и обновляет стоимость и количество необходимых перестроений
+        /// </summary>
+        /// <param name="rs">вставляемый RouteSegment</param>
+        public void Push(RouteSegment rs)
+        {
+            route.AddFirst(rs);
+            costs += rs.costs;
+            if (rs.lineChangeNeeded)
+                ++countOfLineChanges;
+        }
+
+        /// <summary>
+        /// Забирает верхний элемент из route-Stack и обновляет length-Feld
+        /// </summary>
+        /// <returns>route.First.Value</returns>
+        public RouteSegment Pop()
+        {
+            if (route.Count > 0)
+            {
+                RouteSegment rs = route.First.Value;
+                costs -= rs.costs;
+                if (rs.lineChangeNeeded)
+                {
+                    --countOfLineChanges;
+                }
+
+                route.RemoveFirst();
+                return rs;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        ///Возвращает обратно верхний элемент из route-Stack
+        /// </summary>
+        /// <returns>route.First.Value</returns>
+        public RouteSegment Top()
+        {
+            return route.First.Value;
+        }
+
+        /// <summary>
+        /// возвращает количество элементов route-Stacks
+        /// </summary>
+        /// <returns>route.Count</returns>
+        public int SegmentCount()
+        {
+            return route.Count;
+        }
+
+        #region IEnumerable<RouteSegment> Member
+
+        /// <summary>
+        /// Возвращает перечислитель для петель foreach
+        /// </summary>
+        /// <returns>route.GetEnumerator()</returns>
+        public IEnumerator<RouteSegment> GetEnumerator()
+        {
+            return route.GetEnumerator();
+        }
+
+        /// <summary>
+        /// Возвращает перечислитель для петель foreach
+        /// </summary>
+        /// <returns>route.GetEnumerator()</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return route.GetEnumerator();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Вычислить минимальное Евклидово расстояние от startNode к одному из узлов из targetNodes
 		/// </summary>
-		private LinkedList<RouteSegment> route;
-
-		/// <summary>
-		/// Kosten der gesamten Route
-		/// </summary>
-		public double costs;
-
-		/// <summary>
-		/// Anzahl der benötigten Spurwechsel
-		/// </summary>
-		public int countOfLineChanges;
-
-
-		/// <summary>
-		/// Standardkonstruktor, erstellt eine neue leere Wegroute zu einem Zielknoten
-		/// </summary>
-		public Routing()
-			{
-			route = new LinkedList<RouteSegment>();
-			costs = 0;
-			countOfLineChanges = 0;
-			}
-
-
-		/// <summary>
-		/// Pusht das übergebene RouteSegment auf den route-Stack und aktualisiert die Kosten und Anzahl benötigter Spurwechsel
-		/// </summary>
-		/// <param name="rs">einzufügendes RouteSegment</param>
-		public void Push(RouteSegment rs)
-			{
-			route.AddFirst(rs);
-			costs += rs.costs;
-			if (rs.lineChangeNeeded)
-				++countOfLineChanges;
-			}
-
-		/// <summary>
-		/// Poppt das oberste Element vom route-Stack und aktualisiert das length-Feld
-		/// </summary>
-		/// <returns>route.First.Value</returns>
-		public RouteSegment Pop()
-			{
-			if (route.Count > 0)
-				{
-				RouteSegment rs = route.First.Value;
-				costs -= rs.costs;
-				if (rs.lineChangeNeeded)
-					{
-					--countOfLineChanges;
-					}
-
-				route.RemoveFirst();
-				return rs;
-				}
-			else
-				{
-				return null;
-				}
-			}
-
-		/// <summary>
-		/// Liefert das oberste Element vom route-Stack zurück
-		/// </summary>
-		/// <returns>route.First.Value</returns>
-		public RouteSegment Top()
-			{
-			return route.First.Value;
-			}
-
-		/// <summary>
-		/// gibt die Anzahl der Elemente des route-Stacks zurück
-		/// </summary>
-		/// <returns>route.Count</returns>
-		public int SegmentCount()
-			{
-			return route.Count;
-			}
-
-		#region IEnumerable<RouteSegment> Member
-
-		/// <summary>
-		/// Gibt den Enumerator für foreach-Schleifen zurück
-		/// </summary>
-		/// <returns>route.GetEnumerator()</returns>
-		public IEnumerator<RouteSegment> GetEnumerator()
-			{
-			return route.GetEnumerator();
-			}
-
-		/// <summary>
-		/// Gibt den Enumerator für foreach-Schleifen zurück
-		/// </summary>
-		/// <returns>route.GetEnumerator()</returns>
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-			{
-			return route.GetEnumerator();
-			}
-
-		#endregion
-
-		/// <summary>
-		/// berechnet die minimale euklidische Entfernung von startNode zu einem der Knoten aus targetNodes
-		/// </summary>
-		/// <param name="startNode">Startknoten von dem aus die Entfernung berechnet werden soll</param>
-		/// <param name="targetNodes">Liste von LineNodes zu denen die Entfernung berechnet werden soll</param>
-		/// <returns>minimale euklidische Distanz</returns>
+        /// <param name="startNode">Начальный узел из них от расстояния должен быть вычислен</param>
+		/// <param name="targetNodes">Список LineNodes для которых должно быть рассчитано расстояние</param>
+        /// <returns>минимальное Евклидово расстояние</returns>
 		private static double GetMinimumEuklidDistance(LineNode startNode, List<LineNode> targetNodes)
 			{
 			if (targetNodes.Count > 0)
@@ -158,11 +139,11 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Checks, whether the given vehicle type is allowed on ALL NodeConnections incoming in ln.
+        /// Проверяет, разрешен ли данный тип транспортного средства на всех NodeConnections, входящих в ln.
 		/// </summary>
-		/// <param name="ln">LineNode to check</param>
-		/// <param name="type">Vehicle type to check</param>
-		/// <returns>true, if the given vehicle type is allowed on ALL NodeConnections running to ln.</returns>
+		/// <param name="ln">проверить LineNode</param>
+		/// <param name="type"> проверить тип транспортного средства - Vehicle type</param>
+        /// <returns>true, если данный тип транспортного средства разрешен на всех NodeConnections работая в ln.</returns>
 		public static bool CheckLineNodeForIncomingSuitability(LineNode ln, Vehicle.IVehicle.VehicleTypes type)
 			{
 			foreach (NodeConnection nc in ln.prevConnections)
@@ -174,11 +155,11 @@ namespace CityTrafficSimulator
 			}
 
 		/// <summary>
-		/// Berechnet den kürzesten Weg zum targetNode und speichert diesen als Stack in WayToGo
-		/// Implementierung des A*-Algorithmus' frei nach Wikipedia :)
+        /// Рассчитывается кратчайший путь к targetNode и сохраняет это как Stack in WayToGo
+		/// Реализация A*-алгогритма свободно согласно Wikipedia
 		/// </summary>
-		/// <param name="startNode">Startknoten von dem aus der kürzeste Weg berechnet werden soll</param>
-		/// <param name="targetNodes">Liste von Zielknoten zu einem von denen der kürzeste Weg berechnet werden soll</param>
+		/// <param name="startNode">Начальный узел должен расчитываться из кратчайшего пути</param>
+		/// <param name="targetNodes">Liste von Zielknoten к одному из которых кратчайший путь должен быть рассчитан</param>
 		/// <param name="vehicleType">Vehicle type</param>
 		public static Routing CalculateShortestConenction(LineNode startNode, List<LineNode> targetNodes, Vehicle.IVehicle.VehicleTypes vehicleType)
 			{
@@ -186,46 +167,46 @@ namespace CityTrafficSimulator
 			Stack<LineNode.LinkedLineNode> closedlist = new Stack<LineNode.LinkedLineNode>();
 			Routing toReturn = new Routing();
 			
-			// Initialisierung der Open List, die Closed List ist noch leer
-			// (die Priorität bzw. der f Wert des Startknotens ist unerheblich)
+			// Инсталяция Open List, die Closed List ещё пуста
+			// (приоритет или значение f начального узла незначителен)
 			openlist.Enqueue(new LineNode.LinkedLineNode(startNode, null, false), 0);
 
-			// diese Schleife wird durchlaufen bis entweder
-			// - die optimale Lösung gefunden wurde oder
-			// - feststeht, dass keine Lösung existiert
+            // этот цикл будет проходить либо до
+			// - нахождения оптимального решения или
+			// - установления, что решения не существует
 			do
 				{
-				// Knoten mit dem geringsten (in diesem Fall größten) f Wert aus der Open List entfernen
+                    // Удалить узел с наименьшим значением F (в этом случае с наибольшим значением) из Open List
 				PriorityQueueItem<LineNode.LinkedLineNode, double> currentNode = openlist.Dequeue();
 
-				// wurde das Ziel gefunden?
+				// была найдена цель?
 				if (targetNodes.Contains(currentNode.Value.node))
 					{
-					// nun noch die closedList in eine Routing umwandeln
+					// только closedList, чтобы включить в маршрутизацию 
 					closedlist.Push(currentNode.Value);
 					LineNode.LinkedLineNode endnode = closedlist.Pop();
 					LineNode.LinkedLineNode startnode = endnode.parent;
 					while (startnode != null)
 						{
-						// einfacher/direkter Weg über eine NodeConnection
+                            // простой / прямой путь через NodeConnection
 						if (!endnode.lineChangeNeeded)
 							{
 							toReturn.Push(new RouteSegment(startnode.node.GetNodeConnectionTo(endnode.node), endnode.node, false, startnode.node.GetNodeConnectionTo(endnode.node).lineSegment.length));
 							}
-						// Spurwechsel nötig
+						// необходимо перестроение в другой ряд
 						else
 							{
 							NodeConnection formerConnection = startnode.parent.node.GetNodeConnectionTo(startnode.node);
 
 							double length = formerConnection.GetLengthToLineNodeViaLineChange(endnode.node) + Constants.lineChangePenalty;
-							// Anfangs-/ oder Endknoten des Spurwechsels ist eine Ampel => Kosten-Penalty, da hier verstärktes Verkehrsaufkommen zu erwarten ist
+                            // начальным / или конечным узлом смены полосы движения является светофор => штраф, поскольку следует ожидать увеличение трафика
 							if ((endnode.node.tLight != null) || (startnode.node.tLight != null))
 								length += Constants.lineChangeBeforeTrafficLightPenalty;
 
 							toReturn.Push(new RouteSegment(formerConnection, endnode.node, true, length));
 
-							// TODO:	Erklären: hier wird irgendwas doppelt gemacht - ich meine mich zu Erinnern,
-							//			das das so soll, aber nicht warum. Bitte beizeiten analysieren und erklären
+                            // Список дел:	Объяснить: здесь что-то делается дважды - если мне не изменяет память,
+                            //			    это так должно быть, а не почему так.  Заблаговременно проанализировать и объяснить
 							endnode = startnode;
 							startnode = startnode.parent;
 							}
@@ -379,48 +360,48 @@ namespace CityTrafficSimulator
 
 				#endregion
 
-				// der aktuelle Knoten ist nun abschließend untersucht
+                // текущий узел в настоящее время досконально изучен
 				closedlist.Push(currentNode.Value);
 				}
 			while (openlist.Count != 0);
 
-			// Es wurde kein Weg gefunden - dann lassen wir das Auto sich selbst zerstören:
+			// Пути не найдено - в этом случае оставляем мы машину на уничтожение:
 			return toReturn;
 			}
 
 		/// <summary>
-		/// Teilstück einer Wegroute. Entweder eine der endNode der aktuellen NodeConnection, der endNode einer parallelen NodeConnection, zu der ein Spurwechsel nötig ist
+        /// Часть Wegroute. Или один из endNode текущей NodeConnection, или endNode параллельной NodeConnection, которому необходима смена полосы движения 
 		/// </summary>
 		public class RouteSegment
 			{
 			/// <summary>
-			/// NodeConnection auf der dieses RouteSegment beginnt (enden kann es auf einer andere, wenn ein Spurwechsel nötig ist)
+                /// NodeConnection начинается по данному RouteSegment (закончится он может на другом RouteSegment, если необходима смена полосы движения)
 			/// </summary>
 			public NodeConnection startConnection;
 
 			/// <summary>
-			/// LineNode, der als nächstes angefahren werden soll
+			/// LineNode, как следующий должен подъезжать
 			/// </summary>
 			public LineNode nextNode;
 
 			/// <summary>
-			/// Flag, ob dazu ein Spurwechsel nötig ist
+			/// Знак, о необходимости смены полосы
 			/// </summary>
 			public bool lineChangeNeeded;
 
 			/// <summary>
-			/// Kosten dieses Teilstücks (mindestens Länge der NodeConnection, plus evtl. Strafkosten für teure Spurwechsel
+            /// Стоимость этой части (минимальная длина NodeConnection, плюс любые штрафные расходы на дорогую смену полосы движения)
 			/// </summary>
 			public double costs;
 
 
 			/// <summary>
-			/// Standardkonstruktor, erstellt eine neues Routen-Teilstück
+            /// Конструктор по умолчанию создает новый участок маршрута
 			/// </summary>
-			/// <param name="startConnection">NodeConnection auf der dieses RouteSegment beginnt (enden kann es auf einer andere, wenn ein Spurwechsel nötig ist)</param>
-			/// <param name="nextNode">LineNode, der als nächstes angefahren werden soll</param>
-			/// <param name="lineChangeNeeded">Flag, ob dazu ein Spurwechsel nötig ist</param>
-			/// <param name="costs">Kosten dieses Teilstücks (mindestens Länge der NodeConnection, plus evtl. Strafkosten für teure Spurwechsel</param>
+            /// <param name="startConnection">NodeConnection начинается на RouteSegment (закончится он может на другом RouteSegment, если необходима смена полосы движения)</param>
+            /// <param name="nextNode">LineNode, как следующий должен подъезжать</param>
+            /// <param name="lineChangeNeeded">Знак, о необходимости смены полосы</param>
+            /// <param name="costs">Стоимость этой части (минимальная длина NodeConnection, плюс любые штрафные расходы на дорогую смену полосы движения)</param>
 			public RouteSegment(NodeConnection startConnection, LineNode nextNode, bool lineChangeNeeded, double costs)
 				{
 				this.startConnection = startConnection;

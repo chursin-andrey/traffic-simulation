@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="d8bfbebf-ce15-472d-a311-bb89fad5e2e0" name="IDM_CalculateAccelerationHeun" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="7a2fad20-03f8-4bbb-9c78-55a2571ebc7e" name="IDM_CalculateAccelerationHeun" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification Id="c553b93c-08fe-48c2-8046-62d603474697" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="158c8b34-a04d-4b70-9d45-409c8fbda581" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="2eea2956-5bc1-4458-877d-89b9a767b631" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="5f7de91d-1596-4907-80e3-0536e5b8495a" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="f75fe4b4-3bb8-4d34-8694-8fc3805d30a9" LastKnownName="MessageOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="6c04c302-cc31-45e1-b6f8-2d54682b6a53" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="9ebbfc0e-2fbe-48da-95d0-bc49560ca480" LastKnownName="ExecutionOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="ba21965a-dad4-4974-a490-f80fcf86846b" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="937f199f-718b-4102-8df8-a8860df14a12" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="3661551b-1903-4df7-a77b-43c82c826644" LastKnownName="MessageOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="72f37cef-3f23-4b69-a0b4-bf1b57321f22" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="94586074-8fd2-4000-b5bc-68d98b464e5f" LastKnownName="ExecutionOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="bcd2e534-a83d-4d98-bb2f-9f1eb65cc62b" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="f3a23c0a-cb96-45d5-9da9-71a8793cf16b" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="2eea2956-5bc1-4458-877d-89b9a767b631" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="00f63e19-9975-4a37-a40c-b905025952a4" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <lostFoundTarget Id="c3c115f0-8205-440d-8a0d-72b91a6815da" name="LostFoundTarget" />
+          <messageOccurrenceSpecification Id="5f7de91d-1596-4907-80e3-0536e5b8495a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f75fe4b4-3bb8-4d34-8694-8fc3805d30a9" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="1ea91d1f-3383-4add-a276-c7e05ba6678a" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="9ebbfc0e-2fbe-48da-95d0-bc49560ca480" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="6c04c302-cc31-45e1-b6f8-2d54682b6a53" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="ec891121-4070-4325-8a85-c954f9fd382e" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="6c04c302-cc31-45e1-b6f8-2d54682b6a53" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="0d170a56-5f5e-488f-9d06-f6c7a57dcfc1" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ec891121-4070-4325-8a85-c954f9fd382e" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="9ebbfc0e-2fbe-48da-95d0-bc49560ca480" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="ab90c19f-ccbe-4944-9884-aa176444b073" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="c07bf3ee-3f65-4048-8511-cae9c2032a03" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="5c2beeab-2faa-4c4b-98d7-abf5e6007efe" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="e2082b3c-703a-499b-ac1b-69e3db3ef269" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="fcd12d91-f2d6-4e33-bcb5-6ed139c98413" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="fdfa1921-af24-401e-a0c6-cd6169eb097d" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="e2082b3c-703a-499b-ac1b-69e3db3ef269" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="97452a33-1cd5-4bdf-bd0d-2e2efaac2a4a" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ba21965a-dad4-4974-a490-f80fcf86846b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="fcd12d91-f2d6-4e33-bcb5-6ed139c98413" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="fdfa1921-af24-401e-a0c6-cd6169eb097d" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="937f199f-718b-4102-8df8-a8860df14a12" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="5c2beeab-2faa-4c4b-98d7-abf5e6007efe" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="7c7dd5f6-241b-4861-87f5-ab2829b3e783" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="3661551b-1903-4df7-a77b-43c82c826644" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="f6ea54f1-64c4-4550-a316-8b842f1bb5c2" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="94586074-8fd2-4000-b5bc-68d98b464e5f" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="72f37cef-3f23-4b69-a0b4-bf1b57321f22" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="b5507fe3-5d76-4f18-a4bf-985b3f22de79" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="72f37cef-3f23-4b69-a0b4-bf1b57321f22" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="c7a1b058-2b70-485f-8b74-d669d2c50ec0" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b5507fe3-5d76-4f18-a4bf-985b3f22de79" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="94586074-8fd2-4000-b5bc-68d98b464e5f" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="096e718f-d7df-4f89-b5de-d91293595484" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="fbe0170b-5f73-49da-babc-e554e2d48cbb" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="b30e2f52-d6bb-491a-931b-80b6cd058f03" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="a40b38d9-58e3-4456-9ce9-0577b58444de" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="19ce5b96-6200-4888-be7b-b0f3cac8b30a" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="0ac10233-1796-42f0-a3b3-5c54ac36d6b1" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="a40b38d9-58e3-4456-9ce9-0577b58444de" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="5b4ea11e-4867-401b-b872-ca3ba55635d6" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="bcd2e534-a83d-4d98-bb2f-9f1eb65cc62b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="19ce5b96-6200-4888-be7b-b0f3cac8b30a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0ac10233-1796-42f0-a3b3-5c54ac36d6b1" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="f3a23c0a-cb96-45d5-9da9-71a8793cf16b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="b30e2f52-d6bb-491a-931b-80b6cd058f03" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="8d93611b-da44-4936-af3b-609c09a4a878" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="4b093645-713e-4bad-b52a-e0560e625698" LastKnownName="Math2" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="158c8b34-a04d-4b70-9d45-409c8fbda581" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="ce073ed3-0ae8-405b-baf9-8fe6d513c27a" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="db796973-1b79-48ba-9964-0c21409a797a" LastKnownName="this : IDM" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="db796973-1b79-48ba-9964-0c21409a797a" name="this : IDM" isActor="false" lifelineDisplayName="this : IDM" referencedInstance="(Assembly=$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri) Namespace=CityTrafficSimulator Type=IDM ObjectInstance=&quot;Object instance 5&quot;)" referencedType="CityTrafficSimulator.IDM">
+            <referencesInternal>
+              <reference Id="de0a0e8d-dd1f-48d6-9e71-df073d806760" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM)&quot;)" tag="DGQL" />
+              <reference Id="a65aa83b-4b04-4d53-a164-be22c2c773a8" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=IDM)" tag="DGML" />
+            </referencesInternal>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="2eea2956-5bc1-4458-877d-89b9a767b631" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="158c8b34-a04d-4b70-9d45-409c8fbda581" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="4b093645-713e-4bad-b52a-e0560e625698" name="Math2" isActor="false" lifelineDisplayName="Math2" referencedType="CityTrafficSimulator.Math2">
+            <referencesInternal>
+              <reference Id="ab8b3c2f-8cc4-440d-9006-fa2e0585f4b1" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=Math2)&quot;)" tag="DGQL" />
+              <reference Id="f4b2a682-4173-4ff4-9577-d044f1a9e2ea" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=Math2)" tag="DGML" />
+            </referencesInternal>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="e2082b3c-703a-499b-ac1b-69e3db3ef269" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="5c2beeab-2faa-4c4b-98d7-abf5e6007efe" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="a40b38d9-58e3-4456-9ce9-0577b58444de" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="b30e2f52-d6bb-491a-931b-80b6cd058f03" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="cb067100-d92e-4597-8179-80e84d0670d0" name="CalculateAccelerationHeun" messageKind="Found" messageSort="AsynchCall" createSelfMessage="false">
+            <referencesInternal>
+              <reference Id="fcbad880-83f1-47a7-94d2-56d33ec9a520" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateAccelerationHeun OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double)]))&quot;)" tag="DGQL" />
+              <reference Id="f4e4a36a-1eed-4440-b697-25ff9dc1e1f2" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateAccelerationHeun OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <lostFoundTargetMoniker Id="c3c115f0-8205-440d-8a0d-72b91a6815da" LastKnownName="LostFoundTarget" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="5f7de91d-1596-4907-80e3-0536e5b8495a" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="2e4c98d2-e71b-4530-9146-a3f7f8428cba" name="CalculateWantedDistance" messageKind="Complete" messageSort="SynchCall" createSelfMessage="true" signatureText="CalculateWantedDistance(velocity, vDiff)">
+            <referencesInternal>
+              <reference Id="612dc28d-f1d1-4eca-bbd5-677cfa1638bb" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateWantedDistance OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double)]))&quot;)" tag="DGQL" />
+              <reference Id="b24e4d0c-1519-4c0f-8421-75388db5afc1" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateWantedDistance OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="f75fe4b4-3bb8-4d34-8694-8fc3805d30a9" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="ec891121-4070-4325-8a85-c954f9fd382e" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="b86acccb-075a-498e-9cfd-1404e6a6e92b" name="Square" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false" signatureText="Math2.Square(ss1 / distance)">
+            <referencesInternal>
+              <reference Id="331f4106-5778-455c-a709-02d2f3bf4255" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=Math2)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=Math2 Member=(Name=Square OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double)]))&quot;)" tag="DGQL" />
+              <reference Id="cff054bf-3e2e-43fc-9068-2151a4d83e8d" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=Math2 Member=(Name=Square OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="ba21965a-dad4-4974-a490-f80fcf86846b" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="fcd12d91-f2d6-4e33-bcb5-6ed139c98413" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="9cb2a94e-ee1a-4b70-a7c4-2fe3b343a420" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="fdfa1921-af24-401e-a0c6-cd6169eb097d" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="937f199f-718b-4102-8df8-a8860df14a12" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="325230d8-3a31-4e47-a44c-d862a29f4cbb" name="CalculateWantedDistance" messageKind="Complete" messageSort="SynchCall" createSelfMessage="true" signatureText="CalculateWantedDistance(velocity + vNeu, vDiff + vNeu)">
+            <referencesInternal>
+              <reference Id="cee807e3-ed53-4a6f-9cda-f6320f24139c" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateWantedDistance OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double),(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double)]))&quot;)" tag="DGQL" />
+              <reference Id="ab3f9635-b74d-43eb-9a6c-caa44eb10154" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=IDM Member=(Name=CalculateWantedDistance OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double),(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="3661551b-1903-4df7-a77b-43c82c826644" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="b5507fe3-5d76-4f18-a4bf-985b3f22de79" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="6bf88b8d-dc84-4c8b-b25c-6608fd75820b" name="Square" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false" signatureText="Math2.Square(ss2 / distance)">
+            <referencesInternal>
+              <reference Id="4cbd5c38-e7e5-4728-89d3-71cd71c2eab4" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=CityTrafficSimulator)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=Math2)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&amp;quot; Namespace=CityTrafficSimulator Type=Math2 Member=(Name=Square OverloadingParameters=[(Assembly=&amp;quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&amp;quot; Namespace=System Type=Double)]))&quot;)" tag="DGQL" />
+              <reference Id="d8ba680c-096c-4425-95a9-2415bdfc9116" handle="(Assembly=&quot;$(5b17e2ac-7b08-4408-9135-0161a24d117e.OutputPathUri)&quot; Namespace=CityTrafficSimulator Type=Math2 Member=(Name=Square OverloadingParameters=[(Assembly=&quot;$(FxRootUri)/v2.0.50727/mscorlib.dll&quot; Namespace=System Type=Double)]))" tag="DGML" />
+            </referencesInternal>
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="bcd2e534-a83d-4d98-bb2f-9f1eb65cc62b" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="19ce5b96-6200-4888-be7b-b0f3cac8b30a" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="05b3ca7d-53ba-4b2e-8b6b-dc832ab9b006" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="0ac10233-1796-42f0-a3b3-5c54ac36d6b1" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="f3a23c0a-cb96-45d5-9da9-71a8793cf16b" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="00f63e19-9975-4a37-a40c-b905025952a4" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="ce073ed3-0ae8-405b-baf9-8fe6d513c27a" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="0d170a56-5f5e-488f-9d06-f6c7a57dcfc1" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="ab90c19f-ccbe-4944-9884-aa176444b073" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="97452a33-1cd5-4bdf-bd0d-2e2efaac2a4a" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="7c7dd5f6-241b-4861-87f5-ab2829b3e783" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="c7a1b058-2b70-485f-8b74-d669d2c50ec0" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="096e718f-d7df-4f89-b5de-d91293595484" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="5b4ea11e-4867-401b-b872-ca3ba55635d6" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="8d93611b-da44-4936-af3b-609c09a4a878" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

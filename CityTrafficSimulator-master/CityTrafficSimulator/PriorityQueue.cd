@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CityTrafficSimulator.PriorityQueue&lt;TValue, TPriority&gt;">
+    <Position X="3.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAwACAAEABAAEAoABAQCAAACBAAECAACAgBQIAI=</HashCode>
+      <FileName>Tools\PriorityQueue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="CityTrafficSimulator.PriorityQueueItem&lt;TValue, TPriority&gt;">
+    <Position X="7.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAEAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Tools\PriorityQueue.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

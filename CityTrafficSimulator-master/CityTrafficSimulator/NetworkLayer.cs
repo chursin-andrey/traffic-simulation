@@ -25,7 +25,7 @@ using System.Text;
 namespace CityTrafficSimulator
 	{
 	/// <summary>
-	/// Traffic network layer
+	/// TrafficControl network layer
 	/// </summary>
 	[Serializable]
 	public class NetworkLayer

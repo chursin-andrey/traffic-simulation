@@ -36,7 +36,7 @@ namespace CityTrafficSimulator.Verkehr
 		/// <summary>
 		/// traffic volume controller class
 		/// </summary>
-		private VerkehrSteuerung m_steuerung;
+		private TrafficControl m_steuerung;
 
 		/// <summary>
 		/// Refernce to MainForm
@@ -49,7 +49,7 @@ namespace CityTrafficSimulator.Verkehr
 		private NodeManagment m_nodeController;
 
 		/// <summary>
-		/// Traffic Volume of the currently selected route
+		/// TrafficControl Volume of the currently selected route
 		/// </summary>
 		private TrafficVolume m_currentVolume = null;
 
@@ -66,7 +66,7 @@ namespace CityTrafficSimulator.Verkehr
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public TrafficVolumeForm(VerkehrSteuerung steuerung, MainForm mainForm, NodeManagment nodeController)
+		public TrafficVolumeForm(TrafficControl steuerung, MainForm mainForm, NodeManagment nodeController)
 			{
 			this.m_steuerung = steuerung;
 			this.m_mainForm = mainForm;
@@ -78,13 +78,13 @@ namespace CityTrafficSimulator.Verkehr
 			UpdateListboxLayout();
 			GetTrafficVolume();
 
-			this.m_steuerung.StartPointsChanged += new VerkehrSteuerung.StartPointsChangedEventHandler(m_steuerung_StartPointsChanged);
-			this.m_steuerung.DestinationPointsChanged += new VerkehrSteuerung.DestinationPointsChangedEventHandler(m_steuerung_DestinationPointsChanged);
-			this.m_steuerung.GlobalTrafficMultiplierChanged += new VerkehrSteuerung.GlobalTrafficMultiplierChangedEventHandler(m_steuerung_GlobalTrafficMultiplierChanged);
-			this.m_steuerung.CarTargetVelocityChanged += new VerkehrSteuerung.CarTargetVelocityChangedEventHandler(m_steuerung_CarTargetVelocityChanged);
-			this.m_steuerung.TruckTargetVelocityChanged += new VerkehrSteuerung.TruckTargetVelocityChangedEventHandler(m_steuerung_TruckTargetVelocityChanged);
-			this.m_steuerung.BusTargetVelocityChanged += new VerkehrSteuerung.BusTargetVelocityChangedEventHandler(m_steuerung_BusTargetVelocityChanged);
-			this.m_steuerung.TramTargetVelocityChanged += new VerkehrSteuerung.TramTargetVelocityChangedEventHandler(m_steuerung_TramTargetVelocityChanged);
+			this.m_steuerung.StartPointsChanged += new TrafficControl.StartPointsChangedEventHandler(m_steuerung_StartPointsChanged);
+			this.m_steuerung.DestinationPointsChanged += new TrafficControl.DestinationPointsChangedEventHandler(m_steuerung_DestinationPointsChanged);
+			this.m_steuerung.GlobalTrafficMultiplierChanged += new TrafficControl.GlobalTrafficMultiplierChangedEventHandler(m_steuerung_GlobalTrafficMultiplierChanged);
+			this.m_steuerung.CarTargetVelocityChanged += new TrafficControl.CarTargetVelocityChangedEventHandler(m_steuerung_CarTargetVelocityChanged);
+			this.m_steuerung.TruckTargetVelocityChanged += new TrafficControl.TruckTargetVelocityChangedEventHandler(m_steuerung_TruckTargetVelocityChanged);
+			this.m_steuerung.BusTargetVelocityChanged += new TrafficControl.BusTargetVelocityChangedEventHandler(m_steuerung_BusTargetVelocityChanged);
+			this.m_steuerung.TramTargetVelocityChanged += new TrafficControl.TramTargetVelocityChangedEventHandler(m_steuerung_TramTargetVelocityChanged);
 
 			renderOptions.renderLineNodes = false;
 			renderOptions.renderNodeConnections = true;
@@ -98,44 +98,44 @@ namespace CityTrafficSimulator.Verkehr
 			renderOptions.renderVehicleDebugData = false;
 			}
 
-		private void m_steuerung_TramTargetVelocityChanged(object sender, VerkehrSteuerung.TramTargetVelocityChangedEventArgs e)
+		private void m_steuerung_TramTargetVelocityChanged(object sender, TrafficControl.TramTargetVelocityChangedEventArgs e)
 			{
 			if (!ignoreUpdateEvent)
 				spinTramsTargetVelocity.Value = (decimal)m_steuerung.tramTargetVelocity;
 			}
 
-		private void m_steuerung_BusTargetVelocityChanged(object sender, VerkehrSteuerung.BusTargetVelocityChangedEventArgs e)
+		private void m_steuerung_BusTargetVelocityChanged(object sender, TrafficControl.BusTargetVelocityChangedEventArgs e)
 			{
 			if (!ignoreUpdateEvent)
 				spinBussesTargetVelocity.Value = (decimal)m_steuerung.busTargetVelocity;
 			}
 
-		private void m_steuerung_TruckTargetVelocityChanged(object sender, VerkehrSteuerung.TruckTargetVelocityChangedEventArgs e)
+		private void m_steuerung_TruckTargetVelocityChanged(object sender, TrafficControl.TruckTargetVelocityChangedEventArgs e)
 			{
 			if (!ignoreUpdateEvent)
 				spinTrucksTargetVelocity.Value = (decimal)m_steuerung.truckTargetVelocity;
 			}
 
-		private void m_steuerung_CarTargetVelocityChanged(object sender, VerkehrSteuerung.CarTargetVelocityChangedEventArgs e)
+		private void m_steuerung_CarTargetVelocityChanged(object sender, TrafficControl.CarTargetVelocityChangedEventArgs e)
 			{
 			if (!ignoreUpdateEvent)
 				spinCarsTargetVelocity.Value = (decimal)m_steuerung.carTargetVelocity;
 			}
 
-		private void m_steuerung_GlobalTrafficMultiplierChanged(object sender, VerkehrSteuerung.GlobalTrafficMultiplierChangedEventArgs e)
+		private void m_steuerung_GlobalTrafficMultiplierChanged(object sender, TrafficControl.GlobalTrafficMultiplierChangedEventArgs e)
 			{
 			if (!ignoreUpdateEvent)
 				spinGlobalTrafficVolumeMultiplier.Value = (decimal)m_steuerung.globalTrafficMultiplier;
 			}
 
-		private void m_steuerung_StartPointsChanged(object sender, VerkehrSteuerung.StartPointsChangedEventArgs e)
+		private void m_steuerung_StartPointsChanged(object sender, TrafficControl.StartPointsChangedEventArgs e)
 			{
 			lbStartNodes.Items.Clear();
 			lbStartNodes.Items.AddRange(m_steuerung.startPoints.ToArray());
 			GetTrafficVolume();
 			}
 
-		private void m_steuerung_DestinationPointsChanged(object sender, VerkehrSteuerung.DestinationPointsChangedEventArgs e)
+		private void m_steuerung_DestinationPointsChanged(object sender, TrafficControl.DestinationPointsChangedEventArgs e)
 			{
 			lbDestinationNodes.Items.Clear();
 			lbDestinationNodes.Items.AddRange(m_steuerung.destinationPoints.ToArray());

@@ -1466,9 +1466,9 @@ namespace CityTrafficSimulator
 			// entsprechenden Node auswählen
 			if (saveVersion < 5)
 				{
-				XmlNodeList xnlAuftrag = xd.SelectNodes("//CityTrafficSimulator/Traffic/Auftrag");
+				XmlNodeList xnlAuftrag = xd.SelectNodes("//CityTrafficSimulator/TrafficControl/Auftrag");
 
-				lf.SetupLowerProgess("Load Old Traffic Volume...", 2 * xnlAuftrag.Count);
+				lf.SetupLowerProgess("Load Old TrafficControl Volume...", 2 * xnlAuftrag.Count);
 
 				foreach (XmlNode aXmlNode in xnlAuftrag)
 					{

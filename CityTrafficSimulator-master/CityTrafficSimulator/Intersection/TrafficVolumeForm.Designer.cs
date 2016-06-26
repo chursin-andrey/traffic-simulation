@@ -530,7 +530,7 @@
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(155, 13);
 			this.label7.TabIndex = 21;
-			this.label7.Text = "Global Traffic Volume Multiplier:";
+			this.label7.Text = "Global TrafficControl Volume Multiplier:";
 			// 
 			// groupBox1
 			// 
@@ -547,7 +547,7 @@
 			this.groupBox1.Size = new System.Drawing.Size(250, 126);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Per-Route Traffic Volume:";
+			this.groupBox1.Text = "Per-Route TrafficControl Volume:";
 			this.groupBox1.SizeChanged += new System.EventHandler(this.groupBox1_SizeChanged);
 			// 
 			// label6
@@ -646,7 +646,7 @@
 			this.ControlBox = false;
 			this.Controls.Add(this.splitContainer1);
 			this.Name = "TrafficVolumeForm";
-			this.Text = "Traffic Volume Editor";
+			this.Text = "TrafficControl Volume Editor";
 			this.Load += new System.EventHandler(this.TrafficVolumeForm_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel1.PerformLayout();

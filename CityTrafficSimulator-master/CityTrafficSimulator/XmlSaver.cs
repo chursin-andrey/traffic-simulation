@@ -30,7 +30,7 @@ namespace CityTrafficSimulator
             /// <param name="timelineSteuerung">TimelineManagment</param>
             /// <param name="trafficVolumeSteuerung">VerkehrManagment</param>
 		/// <param name="ps">ProgramSettings</param>
-		public static void SaveToFile(string filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung, ProgramSettings ps)
+		public static void SaveToFile(string filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.TrafficControl trafficVolumeSteuerung, ProgramSettings ps)
 			{
 			try
 				{
@@ -80,7 +80,7 @@ namespace CityTrafficSimulator
         /// <param name="nodeSteuerung">NodeManagment должно быть вставлено в Layout</param>
         /// <param name="timelineSteuerung">TimelineManagment должно быть вставлено в LSA</param>
         /// <param name="trafficVolumeSteuerung">TrafficManagment загрузить в</param>
-		public static ProgramSettings LoadFromFile(String filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.VerkehrSteuerung trafficVolumeSteuerung)
+		public static ProgramSettings LoadFromFile(String filename, NodeManagment nodeSteuerung, TimelineManagment timelineSteuerung, Verkehr.TrafficControl trafficVolumeSteuerung)
 			{
 			LoadingForm.LoadingForm lf = new LoadingForm.LoadingForm();
 			lf.Text = "Loading file '" + filename + "'...";
@@ -151,7 +151,7 @@ namespace CityTrafficSimulator
 			lf.StepUpperProgress("Parsing Singnals...");
 			timelineSteuerung.LoadFromFile(xd, nodeSteuerung.nodes, lf);
 
-			lf.StepUpperProgress("Parsing Traffic Volume...");
+			lf.StepUpperProgress("Parsing TrafficControl Volume...");
 			trafficVolumeSteuerung.LoadFromFile(xd, nodeSteuerung.nodes, lf);
 			if (saveVersion < 5)
 				{

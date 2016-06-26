@@ -548,7 +548,7 @@ namespace CityTrafficSimulator.Vehicle
 
 			#endregion
 
-			#region Traffic lights
+			#region TrafficControl lights
 
 			// Check for red traffic lights on route
 			double distanceToTrafficLight = GetDistanceToNextTrafficLightOnRoute(route, arcPos, Constants.lookaheadDistance, true);

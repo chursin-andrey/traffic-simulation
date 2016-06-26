@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
 [assembly: AssemblyTitle("CityTrafficSimulator")]
-[assembly: AssemblyDescription("Mircroscopic Traffic Simulation")]
+[assembly: AssemblyDescription("Mircroscopic TrafficControl Simulation")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Christian Schulte zu Berge")]
 [assembly: AssemblyProduct("CityTrafficSimulator")]

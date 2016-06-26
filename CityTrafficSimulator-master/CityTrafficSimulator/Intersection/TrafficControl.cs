@@ -33,7 +33,7 @@ namespace CityTrafficSimulator.Verkehr
 	/// <summary>
 	/// Steuert das Verkehrsaufkommen
 	/// </summary>
-	public class VerkehrSteuerung : ITickable
+	public class TrafficControl : ITickable
 		{
 		#region Klassenmember inklusive Modifikationsmethoden
 
@@ -281,7 +281,7 @@ namespace CityTrafficSimulator.Verkehr
 		#region Methods
 
 		/// <summary>
-		/// Returns the Traffic Volume for the route from start to destination.
+		/// Returns the TrafficControl Volume for the route from start to destination.
 		/// If no such TrafficVolume exists, a new one will be created.
 		/// start and destination MUST be != null!
 		/// </summary>
@@ -518,7 +518,7 @@ namespace CityTrafficSimulator.Verkehr
 					}
 				else
 					{
-					lf.Log("Error during traffic volume deserialization: Could not dereference start-/end nodes. Traffic volume was dismissed.");
+					lf.Log("Error during traffic volume deserialization: Could not dereference start-/end nodes. TrafficControl volume was dismissed.");
 					}
 				}
 

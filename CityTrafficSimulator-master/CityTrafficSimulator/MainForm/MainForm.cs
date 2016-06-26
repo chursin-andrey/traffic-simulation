@@ -104,7 +104,7 @@ namespace CityTrafficSimulator
 
 			Content tlfContent = _dockingManager.Contents.Add(trafficLightForm, "Signal Editor");
 			SetContentDefaultSettings(tlfContent, trafficLightForm.Size);
-			Content tvfContent = _dockingManager.Contents.Add(trafficVolumeForm, "Traffic Volume Editor");
+			Content tvfContent = _dockingManager.Contents.Add(trafficVolumeForm, "TrafficControl Volume Editor");
 			SetContentDefaultSettings(tvfContent, trafficVolumeForm.Size);
 
 			WindowContent bottomDock = _dockingManager.AddContentWithState(tlfContent, State.DockBottom);
@@ -458,7 +458,7 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// vorläufige Standardgruppe für LSA
 		/// </summary>
-		private TimelineGroup unsortedGroup = new TimelineGroup("Unsorted Traffic Lights", false);
+		private TimelineGroup unsortedGroup = new TimelineGroup("Unsorted TrafficControl Lights", false);
 
 
 		/// <summary>
@@ -474,7 +474,7 @@ namespace CityTrafficSimulator
 		/// <summary>
 		/// TrafficVolumeSteuerung
 		/// </summary>
-		private Verkehr.VerkehrSteuerung trafficVolumeSteuerung = new Verkehr.VerkehrSteuerung();
+		private Verkehr.TrafficControl trafficVolumeSteuerung = new Verkehr.TrafficControl();
 
 		/// <summary>
 		/// Formular zur LSA-Steuerung

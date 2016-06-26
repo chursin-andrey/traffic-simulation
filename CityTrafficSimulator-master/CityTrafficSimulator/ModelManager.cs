@@ -57,7 +57,7 @@ namespace CityTrafficSimulator
 			set 
 				{ 
 				m_trafficDensity = value;
-				m_häufigkeit = 72000 / m_trafficDensity;
+				m_frequency = 72000 / m_trafficDensity;
 				}
 			}
 
@@ -65,20 +65,20 @@ namespace CityTrafficSimulator
 		/// Anzahl der Ticks zwischen zwei Fahrzeugspawns
 		/// </summary>
 		[XmlIgnore]
-		private int m_häufigkeit;
+		private int m_frequency;
 
 
 		/// <summary>
 		/// Wunschgeschwindigkeit der Fahrzeuge
 		/// </summary>
-		private int m_wunschgeschwindigkeit = 14;
+		private int m_desiredSpeed = 14;
 		/// <summary>
 		/// Wunschgeschwindigkeit der Fahrzeuge
 		/// </summary>
-		public int wunschgeschwindigkeit
+		public int desiredSpeed
 			{
-			get { return m_wunschgeschwindigkeit; }
-			set { m_wunschgeschwindigkeit = value; }
+			get { return m_desiredSpeed; }
+			set { m_desiredSpeed = value; }
 			}
 
 		/// <summary>
@@ -152,7 +152,7 @@ namespace CityTrafficSimulator
 				{
 				int zufallsvariable = 0;
 				if (trafficDensityMultiplier != 0)
-					zufallsvariable = GlobalRandom.Instance.Next(failedCount, Decimal.ToInt32((decimal)m_häufigkeit / trafficDensityMultiplier));
+					zufallsvariable = GlobalRandom.Instance.Next(failedCount, Decimal.ToInt32((decimal)m_frequency / trafficDensityMultiplier));
 				else
 					zufallsvariable = 1;
 
@@ -184,7 +184,7 @@ namespace CityTrafficSimulator
 		/// <returns>true, if Vehicle was successfully created - otherwise false</returns>
 		private bool CreateVehicle()
             {
-			IVehicle.Physics p = new IVehicle.Physics(m_wunschgeschwindigkeit, m_wunschgeschwindigkeit, 0);
+			IVehicle.Physics p = new IVehicle.Physics(m_desiredSpeed, m_desiredSpeed, 0);
 
 			IVehicle v = null;
 			switch (m_vehicleType)
@@ -290,7 +290,7 @@ namespace CityTrafficSimulator
 			// Workaround um falsche Wunschgeschwindigkeiten aus alten Dateien zu korrigieren
 			if (saveVersion < 1)
 				{
-				m_wunschgeschwindigkeit *= 2;
+				m_desiredSpeed *= 2;
 				}
 
 			foreach (LineNode ln in nodesList)
